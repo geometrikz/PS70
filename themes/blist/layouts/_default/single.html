@@ -13,7 +13,9 @@
   </div>
   {{ end }}
 
-  <article class="prose lg:prose-lg mx-auto my-8 dark:prose-dark px-4">
+  <div class="container flex justify-between md:justify-between gap-4 flex-wrap p-10 mx-auto relative">
+    
+  <article class="prose lg:prose-lg my-8 dark:prose-dark px-4 max-w-4xl mx-auto" >
 
     <h1 class="text-2xl font-bold mb-2">{{ .Title }}</h1>
     {{ if not (or (or .Site.Params.hideMeta .Params.hideMeta) false) }}
@@ -66,8 +68,9 @@
 
     {{ .Content }}
   </article>
+  </div>
 
   {{- partial "comments.html" . -}}
 
-  {{- partial "social.html" . -}}
+  <!-- {{- partial "social.html" . -}} -->
 {{ end }}
