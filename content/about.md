@@ -6,3 +6,5 @@ description:
 keywords: ["about-us", "about-hugo", "contact"]
 type: about
 ---
+
+Hi, I'm Geoffrey.
