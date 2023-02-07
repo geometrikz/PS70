@@ -7,4 +7,4 @@ keywords: ["about-us", "about-hugo", "contact"]
 type: about
 ---
 
-Hi, I'm Geoffrey.
+Hi, I'm Geoffrey. I still need to update this about me page.

@@ -30,5 +30,9 @@ Hugo's config file is quite readable, think of this as an options page. Hugo's f
 ## Final project ideas
 
 
+## 2D Design: my first laser print
+
+
+
 <!-- 
 ![Sewing Machine](../images/sew.png) -->
