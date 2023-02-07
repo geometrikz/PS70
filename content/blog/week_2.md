@@ -1,7 +1,7 @@
 ---
 author: "Geoffrey Liu"
 title: "Week 2: 2D Design & Cutting"
-date: 2022-02-06
+date: 2023-02-06
 description: "Using a laser cutter and vinyl printer"
 thumbnail: pictures/sew.png
 ---
