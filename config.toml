@@ -1,7 +1,8 @@
-baseurl = "https://geometrikz.github.io/PS70/"
+baseurl = "https://geometrikz.github.io/PS70"
 metaDataFormat = "yaml"
 title = "PS70: Intro to Digital Fabrication"
 theme = "blist"
+canonifyURLs = true
 
 DefaultContentLanguage = "en"
 DefaultContentLanguageInSubdir = true
