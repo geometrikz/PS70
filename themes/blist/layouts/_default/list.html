@@ -1,6 +1,5 @@
-<!-- This is the blog page html template -->
 {{ define "main" }}
-
+  <!-- This is the blog page html template -->
   <h1 class="container px-6 pt-6 mx-auto text-3xl font-bold">{{ .Title }}</h1>
 
   {{ $paginator := .Paginate .Pages.ByDate.Reverse 6 }}
