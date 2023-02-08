@@ -78,16 +78,16 @@ DefaultContentLanguageInSubdir = true
   system = "giscus"
 
   # Options for giscus, exclude hyphens
-  repo = ""
-  repoid = ""
-  category = ""
-  categoryid = ""
-  mapping = ""
-  strict = ""
-  reactionsenabled = ""
-  emitmetadata = ""
-  inputposition = ""
-  theme = ""
+  repo = "geometrikz/ps70"
+  repoid = "R_kgDOI6narQ"
+  category = "Announcements"
+  categoryid = "DIC_kwDOI6narc4CUEG2"
+  mapping = "title"
+  strict = "0"
+  reactionsenabled = "1"
+  emitmetadata = "0"
+  inputposition = "top"
+  # theme = "light"
 
   # Options for utterances, exclude hyphens
   # repo = ""

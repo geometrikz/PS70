@@ -1,8 +1,9 @@
 {{ if .Site.Params.comments.system }}
-<div class="px-2 mb-2">
+<div class="giscus w-full mx-auto pt-4 max-w-4xl">
   {{ if eq .Site.Params.comments.system "disqus" }}
   {{ template "_internal/disqus.html" . }}
   {{ else if eq .Site.Params.comments.system "giscus" }}
+
   <script src="https://giscus.app/client.js"
     data-repo="{{ .Site.Params.comments.repo }}"
     data-repo-id="{{ .Site.Params.comments.repoid }}"
@@ -18,6 +19,49 @@
     crossorigin="anonymous"
     async>
   </script>
+  <script>
+    function changeGiscusTheme() {
+      const theme = document.documentElement.getAttribute('class') === 'dark' ? 'light' : 'dark'
+
+      function sendMessage(message) {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+
+      sendMessage({
+        setConfig: {
+          theme: theme
+        }
+      });
+    }
+    const modeToggle = document.querySelector('.toggle-dark-mode');
+
+    if (modeToggle) {
+      modeToggle.addEventListener('click', changeGiscusTheme);
+    }
+  </script>
+  <!-- <script>
+    let giscusTheme = localStorage.getItem("darkmode");
+    let giscusAttributes = {
+      "src": "https://giscus.app/client.js",
+      "data-repo": "{{ .Site.Params.comments.repo }}",
+      "data-repo-id": "[ENTER REPO ID HERE]",
+      "data-category": "[ENTER CATEGORY NAME HERE]",
+      "data-category-id": "[ENTER CATEGORY ID HERE]",
+      "data-mapping": "pathname",
+      "data-reactions-enabled": "1",
+      "data-emit-metadata": "0",
+      "data-theme": giscusTheme,
+      "data-lang": "en",
+      "crossorigin": "anonymous",
+      "async": "",
+    };
+
+    let giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    document.body.appendChild(giscusScript);
+  </script> -->
   {{ else if eq .Site.Params.comments.system "utterances" }}
   <script src="https://utteranc.es/client.js"
     repo="{{ .Site.Params.comments.repo }}"

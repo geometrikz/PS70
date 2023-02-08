@@ -67,10 +67,16 @@
     {{ end }}
 
     {{ .Content }}
-  </article>
-  </div>
+    
 
+
+  </article>
+    
+  </div>
+  
+  <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700 max-w-4xl mx-auto">
   {{- partial "comments.html" . -}}
+  
 
   <!-- {{- partial "social.html" . -}} -->
 {{ end }}
