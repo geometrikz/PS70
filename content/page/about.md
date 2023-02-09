@@ -8,7 +8,7 @@ type: about
 thumbnail: /images/me1.jpg
 ---
 
-Hi, I'm Geoffrey. I'm a graduate student at Harvard SEAS studying Computer Science, I'm interested in machine learning and quite recently systems design and engineering. I like nature photography, hiking, and cooking.
+Hi, I'm Geoff. I'm a graduate student from Australia studying Computer Science at Harvard SEAS, I'm interested in machine learning, startups and quite recently systems design and engineering. I enjoy nature photography, hiking, cooking and over-engineered products.
 
 <!-- no toc -->
 <details>
