@@ -3,7 +3,7 @@ author: "Geoffrey Liu"
 title: "Week 2: 2D Design & Cutting"
 date: 2023-01-30
 description: "Making a website, learning CAD, using a laser cutter and vinyl printer"
-thumbnail: /images/sew.png
+thumbnail: /images/week1_thumbnail.jpg
 ---
 
 I was on the waitlist for the class and joined 1.5 weeks late so my documentation starts on Week 2 :). This week, I worked on:
