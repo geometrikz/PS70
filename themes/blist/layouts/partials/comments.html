@@ -4,7 +4,7 @@
   {{ template "_internal/disqus.html" . }}
   {{ else if eq .Site.Params.comments.system "giscus" }}
 
-  <script src="https://giscus.app/client.js"
+  <!-- <script src="https://giscus.app/client.js"
     data-repo="{{ .Site.Params.comments.repo }}"
     data-repo-id="{{ .Site.Params.comments.repoid }}"
     data-category="{{ .Site.Params.comments.category }}"
@@ -18,7 +18,8 @@
     data-lang="{{ default "en" $.Site.Language.Lang }}"
     crossorigin="anonymous"
     async>
-  </script>
+  </script> -->
+
   <script>
     function changeGiscusTheme() {
       const theme = document.documentElement.getAttribute('class') === 'dark' ? 'light' : 'dark'
@@ -36,32 +37,32 @@
       });
     }
     const modeToggle = document.querySelector('.toggle-dark-mode');
-
     if (modeToggle) {
       modeToggle.addEventListener('click', changeGiscusTheme);
     }
   </script>
-  <!-- <script>
+  <script>
     let giscusTheme = localStorage.getItem("darkmode");
     let giscusAttributes = {
       "src": "https://giscus.app/client.js",
       "data-repo": "{{ .Site.Params.comments.repo }}",
-      "data-repo-id": "[ENTER REPO ID HERE]",
-      "data-category": "[ENTER CATEGORY NAME HERE]",
-      "data-category-id": "[ENTER CATEGORY ID HERE]",
-      "data-mapping": "pathname",
-      "data-reactions-enabled": "1",
-      "data-emit-metadata": "0",
+      "data-repo-id": "{{ .Site.Params.comments.repoid }}",
+      "data-category": "{{ .Site.Params.comments.category }}",
+      "data-category-id": "{{ .Site.Params.comments.categoryid }}",
+      "data-mapping": "{{ default "pathname" .Site.Params.comments.mapping }}",
+      "data-strict": "{{ default "0" .Site.Params.comments.strict }}",
+      "data-reactions-enabled": "{{ default "1" .Site.Params.comments.reactionsenabled }}",
+      "data-emit-metadata": "{{ default "0" .Site.Params.comments.emitmetadata }}",
+      "data-input-position": "{{ default "bottom" .Site.Params.comments.inputposition }}",
       "data-theme": giscusTheme,
       "data-lang": "en",
       "crossorigin": "anonymous",
       "async": "",
     };
-
     let giscusScript = document.createElement("script");
     Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
     document.body.appendChild(giscusScript);
-  </script> -->
+  </script>
   {{ else if eq .Site.Params.comments.system "utterances" }}
   <script src="https://utteranc.es/client.js"
     repo="{{ .Site.Params.comments.repo }}"
