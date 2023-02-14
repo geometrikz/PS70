@@ -29,3 +29,10 @@ Hugo's config file is quite readable, think of this as an options page. Hugo's f
 
 <!-- 
 ![Sewing Machine](../images/sew.png) -->
+## Fusion360
+
+To learn Fusion360, I followed a few different Youtube tutorials. I decided to choose a 12oz aluminium can and my iPhone as objects to model in Fusion360, my thought to learn how to model a round object and a flat object with small details. 
+
+For the can, I thought it would be easiest to model the cross-section and then use the rotate tool to get a 3d model. To model the cross section, I just measured the height and diameter of the can. I then found a front-on stock image of a standard coca-cola can and placed that image as a canvas onto Fusion360. Canvases can be calibrated by selecting points on the canvas and specifying a dimension, this allowed me to scale the image to the exact dimensions of the can. I then used the spline tool to trace around the irregular edges of the can to complete the cross-section. Then using the rotate tool, I created the 3D can body.
+
+![Can cross-section](/content/blog/images/w2_1.png)
