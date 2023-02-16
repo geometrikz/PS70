@@ -20,5 +20,13 @@ These types of sculptures reminded my of a [Hills Hoist](https://en.wikipedia.or
 
 My plan is to use wire to build it because it's the same material and color as the classic hills hoist.
 
-My initial plan was to make everything using one piece of wire and elegant bends but wire is really hard to work with by hand. Everytime I tried to wrap the wire around or bend a new part of the wire, another part of the wire which I already completed would go out of shape.
+My initial plan was to make everything using one piece of wire and elegant bends but wire is really hard to work with by hand. Everytime I tried to wrap the wire around or bend a new part of the wire, another part of the wire which I already completed would go out of shape. I ran into alot of issues this week while working with wire... I tried making wire gears and then realized that you needed a special wire-bending tool to make those gears. Since I couldn't do everything in one piece, I thought that I would 'just be able to' solder wires together to attach the separate pieces of wire together but when I tried to solder wire together the solder wouldn't stick. THE BIGGEST PITA!
 
+I had to change my plan a little and use laser-cut gears instead of wire gears, and attaching the sculpture to a box instead of it being attached to a wire cog.
+
+![video](/content/blog/images/w3_1.jpeg)
+![video](/content/blog/images/IMG_6920.gif)
+
+To measure the circuit I measured the voltage across the motor with the load (4.92V), and also attached the multimeter in continuity mode to measure the resistance of the motor and using Ohm's law calculate the current to be 2.5$\mu A$. This means the wattage is ~0.1W which is really small. 
+
+![video](/content/blog/images/w3_2.jpeg)
