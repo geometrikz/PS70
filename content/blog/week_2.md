@@ -45,12 +45,12 @@ For the second household object, I chose to model my iPhone, it seemed complex e
 
 I was inspired by a clover, so I attempted to design a clover in Fusion360 for my press-fit kit. I started off with a rectangles that was 25x20mm and mirrored them along 60 and 120 degree lines to obtain a 'shuriken-like' object. Using the rectangle tool, I created a 4mm cutout so the object can fit into the other (4.1mm = thickness of cardboard minus kerf = 0.05mm per side). I then created triangles on each side of the rectangle 10mm by 25mm to create the leaves of the clover. I used the conic spline and fillet tools to round off the edges of the leaves which left me an object that resembled a clover.
 
-![Clover](/content/blog/images/w2_5.png)
-![Clover](/content/blog/images/w2_6.png)
+![img4](/content/blog/images/w2_5.png)
+![img3](/content/blog/images/w2_6.png)
 
 I initially had some issues with the kerf of the laser cutter, but through trial and error landed at the above settings. 
 
 This is how it turned out 
-![Clover](/content/blog/images/w2_3.jpeg)
-![Clover](/content/blog/images/w2_4.jpeg)
+![img1](/content/blog/images/w2_3.jpeg)
+![img2](/content/blog/images/w2_4.jpeg)
 
