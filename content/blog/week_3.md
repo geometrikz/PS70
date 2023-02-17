@@ -27,9 +27,9 @@ I had to change my plan a little and use laser-cut gears instead of wire gears, 
 I also had to change the design of the hills hoist to make it more stable by adding a wire base. 
 I still haven't figured out the most elegant way to attach the base to the gear but for now I'm using tape, which is not ideal. I plan to improve this prototype by reprinting the gears in acrylic.
 
-![video](/static/images/w3_1.jpeg)
-![video](/static/images/IMG_6920.gif)
+![im1](/images/w3_1.jpeg)
+![im2](/images/IMG_6920.gif)
 
 To measure the circuit I measured the voltage across the motor with the load (4.92V), and also attached the multimeter in continuity mode to measure the resistance of the motor and using Ohm's law calculate the current to be 2.5$\mu A$. This means the wattage is ~0.1W which is really small. 
 
-![video](/static/images/w3_2.jpeg)
+![im3](/images/w3_2.jpeg)
