@@ -169,6 +169,10 @@ I wrote a class `moistureSensor` to store the moisture sensor calibration data (
 
 To output to the OLED display, the `Adafruit_SSD1306` and `Adafruit GFX` library needs to first be installed. To check whether or not the OLED display is wired correctly, we can use the example script `ssd1306_128x64_i2c.ino` from the `Adafruit_SSD1306` library, which can be accessed via `Files > Examples > Adafruit SSD1306 > ssd1306_128x64_i2c` in Arduino IDE. By default, the GPIO21 and GPIO22 pins and the `0x3D` I2C address is used in the script. Change these to use the correct GPIO pins and I2C address if necessary.
 
+To make the display output text in a prettier way, I wrote a typewriter animation function that prints text to display one character at a time.
+
+
+
 ## Putting it all together
 
 To put all these things together, I wrote a function that allows you to calibrate the moisture sensor by pressing a button. When plugging in the ESP32, the OLED display will display the steps needed to calibrate the moisture sensor. The button needs to be pressed to get a 0% moisture reading and pressed again to get a 100% moisture reading. In a future iteration, I plan to make the calibration process more accurate by pressing and holding the button for 3 seconds and take the average calibration value over that time.
@@ -180,6 +184,20 @@ After calibrating the sensor, the pump will automatically turn on for 3 seconds 
 * Calibrate length that pump is on for
 * Add pump countdown timer on the screen
 * Connect pump to a 3D printed 'sprinkler' that evenly distributes moisture.
+
+
+<details>
+    <summary>Video </summary>
+    <center>
+    <video src="/images/IMG_6987.MOV" controls="controls" style="max-width: 480px">
+    </center>
+</video>
+</details>
+
+<details>
+    <summary>Circuit schematic </summary>
+    <img src="/images/w4_circuit.png"></img>
+</details>
 
 <details>
   <summary>Complete code</summary>
