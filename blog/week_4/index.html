@@ -1,0 +1,342 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=https://geometrikz.github.io/PS70/favicon.ico><title>Week 4: Microcontroller programming - PS70: Intro to Digital Fabrication</title><meta name=description content="Creating an automatic watering system using moisture sensor and pump"><meta name=author content="Geoffrey Liu"><meta name=generator content="Hugo 0.110.0"><link rel=stylesheet href="https://geometrikz.github.io/PS70/css/styles.min.8cda45f6c9812de7ab7582266423fa03682a7c0f63ed7427b4a4b6db57ccf687.css" integrity="sha256-jNpF9smBLeerdYImZCP6A2gqfA9j7XQntKS221fM9oc="><meta property="og:title" content="Week 4: Microcontroller programming"><meta property="og:description" content="Creating an automatic watering system using moisture sensor and pump"><meta property="og:type" content="article"><meta property="og:url" content="https://geometrikz.github.io/PS70/blog/week_4/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2023-02-20T00:00:00+00:00"><meta property="article:modified_time" content="2023-02-20T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Week 4: Microcontroller programming"><meta name=twitter:description content="Creating an automatic watering system using moisture sensor and pump"><meta itemprop=name content="Week 4: Microcontroller programming"><meta itemprop=description content="Creating an automatic watering system using moisture sensor and pump"><meta itemprop=datePublished content="2023-02-20T00:00:00+00:00"><meta itemprop=dateModified content="2023-02-20T00:00:00+00:00"><meta itemprop=wordCount content="1878"><meta itemprop=keywords content></head><body class="dark:bg-gray-800 dark:text-white relative flex flex-col min-h-screen"><header class="container flex justify-between md:justify-between gap-4 flex-wrap p-6 mx-auto relative"><a href=https://geometrikz.github.io/PS70/ class="capitalize font-extrabold text-2xl">PS70: Intro to Digital Fabrication</a>
+<button class="mobile-menu-button md:hidden"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg></button><ul class="mobile-menu absolute z-10 px-6 pb-6 md:p-0 top-full left-0 w-full md:w-auto md:relative hidden md:flex flex-col md:flex-row items-end md:items-center gap-4 lg:gap-6 bg-white dark:bg-gray-800"><li><a href=https://geometrikz.github.io/PS70/blog>Project</a></li><li><a href=https://geometrikz.github.io/PS70/page/about/>About</a></li><li class="grid place-items-center"><span class="open-search inline-block cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg></span></li><li class="grid place-items-center"><span class="toggle-dark-mode inline-block cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="5" x2="12" y2="5.01"/><line x1="17" y1="7" x2="17" y2="7.01"/><line x1="19" y1="12" x2="19" y2="12.01"/><line x1="17" y1="17" x2="17" y2="17.01"/><line x1="12" y1="19" x2="12" y2="19.01"/><line x1="7" y1="17" x2="7" y2="17.01"/><line x1="5" y1="12" x2="5" y2="12.01"/><line x1="7" y1="7" x2="7" y2="7.01"/></svg></span></li></ul></header><main class=flex-1><div class="relative max-w-5xl mx-auto px-4"><img src=https://geometrikz.github.io/PS70/images/w4_thumb.jpeg class="rounded-lg shadow-sm w-full object-contain"></div><div class="container flex justify-between md:justify-between gap-4 flex-wrap p-10 mx-auto relative"><article class="prose lg:prose-lg my-8 dark:prose-dark px-4 max-w-4xl mx-auto"><h1 class="text-2xl font-bold mb-2">Week 4: Microcontroller programming</h1><details id=TableOfContents class="px-4 mt-4 bg-gray-100 dark:bg-gray-700 rounded toc"><summary class="flex items-center font-bold py-2 px-4 cursor-pointer justify-between select-none text-black dark:text-white"><span>Table of contents</span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="6 9 12 15 18 9"/></svg></summary><ul class="mt-2 pb-4"><li><a href=#list-of-components>List of components</a></li><li><a href=#connecting-the-components>Connecting the components</a><ul><li><a href=#outputting-to-oled-display>Outputting to OLED display</a></li></ul></li><li><a href=#putting-it-all-together>Putting it all together</a></li><li><a href=#next-steps>Next steps</a></li></ul></details><p>This week I created the first iteration of my automatic plant watering system using a moisture sensor, water pump and OLED display. There were three main components to this project:</p><ol><li>Connecting the components to the microcontroller</li><li>Calibrating the moisture sensor</li><li>Make other components do stuff based on moisture sensor data</li></ol><h2 id=list-of-components>List of components</h2><ul><li><a href=https://www.espressif.com/en/products/devkits/esp32-devkitc/overview target=_blank rel=noopener>ESP32-S2 DevKitC</a></li><li>Push button</li><li>10k resistor</li><li>Breadboard</li><li>Wires</li><li>5V water pump</li><li>L9110 motor driver</li><li>LED</li><li>Capacitive Soil Moisture Sensor</li><li>128x64px OLED display (I2C)</li></ul><h2 id=connecting-the-components>Connecting the components</h2><p>The push button was attached using a pulldown resistor using the instructions found <a href=https://nathanmelenbrink.github.io/lab/arduino/arduino.html target=_blank rel=noopener>here</a>
+. An LED was connected to pin 13, used to visually confirm button presses. This can be left out and logs or print statements used instead.</p><p>The capacitative soil moisture sensor was connected to the ESP32-S2 by connecting the VCC pin to 3.3V, the GND pin to GND, and the SIG pin to pin 17 (analog input).</p><p>The L9110 motor driver board was connected by connecting VCC to 5V, GND to GND, and the SIG pin to 33. The L9110 connects to the water pump using the A1A and A1B outputs.</p><p>The L9110 was connected by connecting the VCC pin to 5V, the GND pin to GND, and the A1A pin to pin 41 and the A1B pin to pin 40, then the water pump was connected to the green terminals on the L9110.</p><p>The OLED display is somewhat trickier to connect since it requires finding the right I2C GPIO pins which is device dependent. For the ESP32-S2-DevKitC by Espressif Systems, the default SDA and SCL ports are GPIO8 and GPIO9. The display was connected by connecting the VCC pin to 3.3V, the GND pin to GND, the SDA pin to GPIO8, and the SCL pin to GPIO9. For default ESP32 systems, the usual SDA and SCL pins are GPIO21 and GPIO22 respectively.</p><p>To check whether or not the OLED display is connected to the right GPIO ports, the following code can be used.</p><details><summary>Code for I2C Checker</summary>
+```cpp
+/*********
+Rui Santos
+Complete project details at https://randomnerdtutorials.com
+*********/<p>#include &lt;Wire.h></p><p>void setup() {
+Wire.begin(8, 9);
+Serial.begin(115200);
+Serial.println("\nI2C Scanner");
+}</p><p>void loop() {
+byte error, address;
+int nDevices;
+Serial.println(&ldquo;Scanning&mldr;&rdquo;);
+nDevices = 0;
+for(address = 1; address &lt; 127; address++ ) {
+Wire.beginTransmission(address);
+error = Wire.endTransmission();
+if (error == 0) {
+Serial.print(&ldquo;I2C device found at address 0x&rdquo;);
+if (address&lt;16) {
+Serial.print(&ldquo;0&rdquo;);
+}
+Serial.println(address,HEX);
+nDevices++;
+}
+else if (error==4) {
+Serial.print(&ldquo;Unknow error at address 0x&rdquo;);
+if (address&lt;16) {
+Serial.print(&ldquo;0&rdquo;);
+}
+Serial.println(address,HEX);
+}<br>}
+if (nDevices == 0) {
+Serial.println(&ldquo;No I2C devices found\n&rdquo;);
+}
+else {
+Serial.println(&ldquo;done\n&rdquo;);
+}
+delay(5000);<br>}</p><pre tabindex=0><code>
+&lt;/details&gt;
+
+If using pins other than the default GPIO21 and GPIO22, the `Wire.begin(SDA, SCL)` function can be used, since we are using GPIO8 and GPIO9, `Wire.begin(8, 9)` is used in the `setup()` function. The code will output the I2C address of any devices connected to the I2C bus. For my device, the I2C address is `0x3C`, keep this address in mind for later.
+
+## Calibrating sensor data and outputting to OLED display
+
+### Calibrating the moisture sensor
+The moisture sensor is relatively simple to read, after connecting the sensor, it can directly be read using the `analogRead()` function. However, the sensor outputs quite a large range, in my case from ~3000 to ~7500. This is not directly useful for determining the moisture level of the soil, so the sensor was calibrated to output a range between 0 to 100. To do this, a 0% moisture level was determined by reading the sensor in the air, and the 100% moisture level was determined by placing the sensor in the water. The difference between the two values was used to scale the sensor output _linearly_ to a range of 0 to 100. I have yet to test whether this is a valid assumption, and depending on the initial calibration, the current readings after scaling can exceed 100 and go below 0. However, during my testing this occurs infrequently.
+
+I wrote a class `moistureSensor` to store the moisture sensor calibration data (useful for when multiple sensors are added). There is a `read()` method within the class that reads a scaled moisture value. There are also `calibrate_low()` and `calibrate_high()` methods that calibrate the sensor to the current moisture level.
+
+&lt;details&gt;
+  &lt;summary&gt; Code for calibrating moisture sensor &lt;/summary&gt;
+  
+  ```cpp
+    // Moisture sensor class
+    struct moistureSensor {
+    int pin;
+    int low;
+    int high;
+    bool calibrated;
+    // function to read scaled 0-100 value (fix scaling function)
+    double read() {
+    int rawVal = analogRead(pin);
+    int scale = high - low;
+    double out = -(rawVal - low);
+    return -out/scale*100;
+    }
+    // function to calibrate 0% moisture
+    // Currently broken I think!
+    void calibrate_low() {
+    low = analogRead(pin);
+    }
+    // function to calibrate 100% moisture
+    void calibrate_high() {
+    high = analogRead(pin);
+    }
+    };
+
+    // Function to calibrate sensors
+    bool sensorsCalibrated = false;
+    float moistureLevel = 100.0;
+    void calibrateSensors() {
+        moistureSensor mS17 = {17, 7550, 3050};
+        display.clearDisplay();
+        display.setCursor(0, 2);
+        writer(&#34;Press and hold button for 3 seconds with moisture sensor in the air&#34;);
+
+        waitForPress();
+        // mS17.calibrate_low();
+        mS17.low = analogRead(mS17.pin)
+        writer(&#34;0% humidity calibrated&#34;);
+        delay(2000);
+
+        display.clearDisplay();
+        display.setCursor(0, 2);
+        writer(&#34;Press and hold button for 3 seconds with moisture sensor in the water&#34;);
+        waitForPress();
+        // mS17.calibrate_high();
+        mS17.high = analogRead(mS17.pin)
+        writer(&#34;100% humidity calibrated&#34;);
+
+        display.clearDisplay();
+        display.setCursor(0, 2);
+        writer(&#34;Calibration complete.&#34;);
+        delay(1000);
+        display.clearDisplay();
+        delay(50);
+
+    // return true;
+    }
+</code></pre></details><h3 id=outputting-to-oled-display>Outputting to OLED display</h3><p>To output to the OLED display, the <code>Adafruit_SSD1306</code> and <code>Adafruit GFX</code> library needs to first be installed. To check whether or not the OLED display is wired correctly, we can use the example script <code>ssd1306_128x64_i2c.ino</code> from the <code>Adafruit_SSD1306</code> library, which can be accessed via <code>Files > Examples > Adafruit SSD1306 > ssd1306_128x64_i2c</code> in Arduino IDE. By default, the GPIO21 and GPIO22 pins and the <code>0x3D</code> I2C address is used in the script. Change these to use the correct GPIO pins and I2C address if necessary.</p><h2 id=putting-it-all-together>Putting it all together</h2><p>To put all these things together, I wrote a function that allows you to calibrate the moisture sensor by pressing a button. When plugging in the ESP32, the OLED display will display the steps needed to calibrate the moisture sensor. The button needs to be pressed to get a 0% moisture reading and pressed again to get a 100% moisture reading. In a future iteration, I plan to make the calibration process more accurate by pressing and holding the button for 3 seconds and take the average calibration value over that time.</p><p>After calibrating the sensor, the pump will automatically turn on for 3 seconds if the moisture level is below 60%. Since it takes a while for soil to saturate, the pump will only turn on once every 60 seconds. The code for the implementation can be found below.</p><h2 id=next-steps>Next steps</h2><ul><li>Calibrate length that pump is on for</li><li>Add pump countdown timer on the screen</li><li>Connect pump to a 3D printed &lsquo;sprinkler&rsquo; that evenly distributes moisture.</li></ul><details><summary>Complete code</summary><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#6272a4>/*
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>Code for automatic watering system.
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>Calibrates moisture sensor, reads moisture level from calibrated sensor, and turns on pump for 3 seconds if moisture level is below 60%. 
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>*/</span>
+</span></span><span style=display:flex><span><span style=color:#6272a4>// OLED display
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#ff79c6>#include</span> <span style=color:#ff79c6>&lt;SPI.h&gt;</span><span style=color:#ff79c6>
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6>#include</span> <span style=color:#ff79c6>&lt;Wire.h&gt;</span><span style=color:#ff79c6>
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6>#include</span> <span style=color:#ff79c6>&lt;Adafruit_GFX.h&gt;</span><span style=color:#ff79c6>
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6>#include</span> <span style=color:#ff79c6>&lt;Adafruit_SSD1306.h&gt;</span><span style=color:#ff79c6>
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6></span>
+</span></span><span style=display:flex><span><span style=color:#6272a4>// Pin numbers
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#ff79c6>const</span> <span style=color:#8be9fd>int</span> buttonPin <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>2</span>;  <span style=color:#6272a4>// the number of the pushbutton pin
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#ff79c6>const</span> <span style=color:#8be9fd>int</span> ledPin <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>13</span>;    <span style=color:#6272a4>// the number of the LED pin
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#ff79c6>const</span> <span style=color:#8be9fd>int</span> moisturePin <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>17</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>const</span> <span style=color:#8be9fd>int</span> A1A <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>41</span>;  <span style=color:#6272a4>// define pin 3 for A-1A 
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#ff79c6>const</span> <span style=color:#8be9fd>int</span> A1B <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>40</span>;  <span style=color:#6272a4>// define pin 4 for A-1B 
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>
+</span></span><span style=display:flex><span><span style=color:#6272a4>// variables
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#8be9fd>int</span> buttonState <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>;  <span style=color:#6272a4>// variable for reading the unsigned
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#8be9fd>unsigned</span> <span style=color:#8be9fd>long</span> display_refresh <span style=color:#ff79c6>=</span> millis();
+</span></span><span style=display:flex><span><span style=color:#8be9fd>unsigned</span> <span style=color:#8be9fd>long</span> pump_refresh <span style=color:#ff79c6>=</span> millis();
+</span></span><span style=display:flex><span><span style=color:#8be9fd>unsigned</span> <span style=color:#8be9fd>long</span> pump_start <span style=color:#ff79c6>=</span> millis();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#6272a4>// Moisture sensor class
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#ff79c6>struct</span> <span style=color:#50fa7b>moistureSensor</span> {
+</span></span><span style=display:flex><span><span style=color:#8be9fd>int</span> pin;
+</span></span><span style=display:flex><span><span style=color:#8be9fd>int</span> low;
+</span></span><span style=display:flex><span><span style=color:#8be9fd>int</span> high;
+</span></span><span style=display:flex><span><span style=color:#8be9fd>bool</span> calibrated;
+</span></span><span style=display:flex><span><span style=color:#6272a4>// function to read scaled 0-100 value (fix scaling function)
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#8be9fd>double</span> <span style=color:#50fa7b>read</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#8be9fd>int</span> rawVal <span style=color:#ff79c6>=</span> analogRead(pin);
+</span></span><span style=display:flex><span>  <span style=color:#8be9fd>int</span> scale <span style=color:#ff79c6>=</span> high <span style=color:#ff79c6>-</span> low;
+</span></span><span style=display:flex><span>  <span style=color:#8be9fd>double</span> out <span style=color:#ff79c6>=</span> <span style=color:#ff79c6>-</span>(rawVal <span style=color:#ff79c6>-</span> low);
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>return</span> <span style=color:#ff79c6>-</span>out<span style=color:#ff79c6>/</span>scale<span style=color:#ff79c6>*</span><span style=color:#bd93f9>100</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#6272a4>// function to calibrate 0% moisture
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>// Currently broken I think!
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#8be9fd>void</span> <span style=color:#50fa7b>calibrate_low</span>() {
+</span></span><span style=display:flex><span>  low <span style=color:#ff79c6>=</span> analogRead(pin);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#6272a4>// function to calibrate 100% moisture
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#8be9fd>void</span> <span style=color:#50fa7b>calibrate_high</span>() {
+</span></span><span style=display:flex><span>  high <span style=color:#ff79c6>=</span> analogRead(pin);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#6272a4>// OLED Screen
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#ff79c6>#define SCREEN_WIDTH 128 </span><span style=color:#6272a4>// OLED display width, in pixels
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#ff79c6>#define SCREEN_HEIGHT 64 </span><span style=color:#6272a4>// OLED display height, in pixels
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#ff79c6>#define OLED_RESET     -1 </span><span style=color:#6272a4>// Reset pin # (or -1 if sharing Arduino reset pin)
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#ff79c6>#define SCREEN_ADDRESS 0x3C </span><span style=color:#6272a4>///&lt; See datasheet for Address; 0x3D for 128x64, 0x3C for 128x32
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>Adafruit_SSD1306 <span style=color:#50fa7b>display</span>(SCREEN_WIDTH, SCREEN_HEIGHT, <span style=color:#ff79c6>&amp;</span>Wire, OLED_RESET);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#6272a4>// Global variables
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>moistureSensor mS17 <span style=color:#ff79c6>=</span> {<span style=color:#bd93f9>17</span>, <span style=color:#bd93f9>7550</span>, <span style=color:#bd93f9>3050</span>, <span style=color:#8be9fd;font-style:italic>false</span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#8be9fd>void</span> <span style=color:#50fa7b>writer</span> (<span style=color:#8be9fd>char</span> <span style=color:#ff79c6>*</span>message, <span style=color:#8be9fd>int</span> lag<span style=color:#ff79c6>=</span><span style=color:#bd93f9>50</span>, <span style=color:#8be9fd>bool</span> newline<span style=color:#ff79c6>=</span><span style=color:#8be9fd;font-style:italic>true</span>) { 
+</span></span><span style=display:flex><span>  <span style=color:#8be9fd>char</span> <span style=color:#ff79c6>*</span>msgptr <span style=color:#ff79c6>=</span> message;
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>while</span> (<span style=color:#ff79c6>*</span>msgptr) {
+</span></span><span style=display:flex><span>   display.write(<span style=color:#ff79c6>*</span>msgptr<span style=color:#ff79c6>++</span>);
+</span></span><span style=display:flex><span>   display.display();
+</span></span><span style=display:flex><span>   delay(lag);  
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>if</span> (newline){
+</span></span><span style=display:flex><span>    display.println(<span style=color:#f1fa8c>&#34;&#34;</span>);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#8be9fd>void</span> <span style=color:#50fa7b>waitForPress</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>while</span> (digitalRead(buttonPin) <span style=color:#ff79c6>==</span> LOW) {
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>// Do nothing
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>  }
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#8be9fd>bool</span> sensorsCalibrated <span style=color:#ff79c6>=</span> <span style=color:#8be9fd;font-style:italic>false</span>;
+</span></span><span style=display:flex><span><span style=color:#8be9fd>float</span> moistureLevel <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>100.0</span>;
+</span></span><span style=display:flex><span><span style=color:#8be9fd>void</span> <span style=color:#50fa7b>calibrateSensors</span>() {
+</span></span><span style=display:flex><span>  moistureSensor mS17 <span style=color:#ff79c6>=</span> {<span style=color:#bd93f9>17</span>, <span style=color:#bd93f9>7550</span>, <span style=color:#bd93f9>3050</span>};
+</span></span><span style=display:flex><span>  display.clearDisplay();
+</span></span><span style=display:flex><span>  display.setCursor(<span style=color:#bd93f9>0</span>, <span style=color:#bd93f9>2</span>);
+</span></span><span style=display:flex><span>  writer(<span style=color:#f1fa8c>&#34;Press and hold button for 3 seconds with moisture sensor in the air&#34;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  waitForPress();
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>// mS17.calibrate_low();
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>  mS17.low <span style=color:#ff79c6>=</span> analogRead(mS17.pin)
+</span></span><span style=display:flex><span>  writer(<span style=color:#f1fa8c>&#34;0% humidity calibrated&#34;</span>);
+</span></span><span style=display:flex><span>  delay(<span style=color:#bd93f9>2000</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  display.clearDisplay();
+</span></span><span style=display:flex><span>  display.setCursor(<span style=color:#bd93f9>0</span>, <span style=color:#bd93f9>2</span>);
+</span></span><span style=display:flex><span>  writer(<span style=color:#f1fa8c>&#34;Press and hold button for 3 seconds with moisture sensor in the water&#34;</span>);
+</span></span><span style=display:flex><span>  waitForPress();
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>// mS17.calibrate_high();
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>  mS17.high <span style=color:#ff79c6>=</span> analogRead(mS17.pin)
+</span></span><span style=display:flex><span>  writer(<span style=color:#f1fa8c>&#34;100% humidity calibrated&#34;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  display.clearDisplay();
+</span></span><span style=display:flex><span>  display.setCursor(<span style=color:#bd93f9>0</span>, <span style=color:#bd93f9>2</span>);
+</span></span><span style=display:flex><span>  writer(<span style=color:#f1fa8c>&#34;Calibration complete.&#34;</span>);
+</span></span><span style=display:flex><span>  delay(<span style=color:#bd93f9>1000</span>);
+</span></span><span style=display:flex><span>  display.clearDisplay();
+</span></span><span style=display:flex><span>  delay(<span style=color:#bd93f9>50</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>// return true;
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#8be9fd>void</span> <span style=color:#50fa7b>setup</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>// initialize the LED pin as an output:
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>  pinMode(ledPin, OUTPUT);
+</span></span><span style=display:flex><span>  pinMode(A1A, OUTPUT);     <span style=color:#6272a4>// specify these pins as outputs
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>  pinMode(A1B, OUTPUT);
+</span></span><span style=display:flex><span>  digitalWrite(A1A, LOW);   <span style=color:#6272a4>// start with the motors off 
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>  digitalWrite(A1B, LOW);
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>// initialize the pushbutton pin as an input:
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>  pinMode(buttonPin, INPUT);
+</span></span><span style=display:flex><span>  ESP32PWM<span style=color:#ff79c6>::</span>allocateTimer(<span style=color:#bd93f9>0</span>);
+</span></span><span style=display:flex><span> ESP32PWM<span style=color:#ff79c6>::</span>allocateTimer(<span style=color:#bd93f9>1</span>);
+</span></span><span style=display:flex><span> ESP32PWM<span style=color:#ff79c6>::</span>allocateTimer(<span style=color:#bd93f9>2</span>);
+</span></span><span style=display:flex><span> ESP32PWM<span style=color:#ff79c6>::</span>allocateTimer(<span style=color:#bd93f9>3</span>);
+</span></span><span style=display:flex><span> myservo.setPeriodHertz(<span style=color:#bd93f9>50</span>);    <span style=color:#6272a4>// standard 50 hz servo
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span> myservo.attach(servoPin, <span style=color:#bd93f9>500</span>, <span style=color:#bd93f9>2400</span>); 
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  Serial.begin(<span style=color:#bd93f9>9600</span>);
+</span></span><span style=display:flex><span>  Serial.print(<span style=color:#f1fa8c>&#34;Initializing Moisture Sensor on Pin 17&#34;</span>);
+</span></span><span style=display:flex><span>  Serial.println(mS17.pin);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>if</span>(<span style=color:#ff79c6>!</span>display.begin(SSD1306_SWITCHCAPVCC, <span style=color:#bd93f9>0x3C</span>)) { <span style=color:#6272a4>// Address 0x3D for 128x64
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    Serial.println(F(<span style=color:#f1fa8c>&#34;SSD1306 allocation failed&#34;</span>));
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>for</span>(;;);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  display.clearDisplay();
+</span></span><span style=display:flex><span>  display.setTextSize(<span style=color:#bd93f9>1</span>);
+</span></span><span style=display:flex><span>  display.setTextColor(WHITE);
+</span></span><span style=display:flex><span>  display.setCursor(<span style=color:#bd93f9>0</span>, <span style=color:#bd93f9>10</span>);
+</span></span><span style=display:flex><span>  writer(<span style=color:#f1fa8c>&#34;Initializing moisture sensors&#34;</span>);
+</span></span><span style=display:flex><span>  writer(<span style=color:#f1fa8c>&#34;Press button to continue&#34;</span>);
+</span></span><span style=display:flex><span>  waitForPress();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  calibrateSensors(); <span style=color:#6272a4>// TODO: Calibrate sensors for 3 seconds instead of 1 instant.
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>  display.clearDisplay();
+</span></span><span style=display:flex><span>  delay(<span style=color:#bd93f9>500</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#6272a4>// Code to detect long button press.
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>
+</span></span><span style=display:flex><span><span style=color:#6272a4>// void buttonLongPress() {
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>//   uint32_t duration = 0;
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>
+</span></span><span style=display:flex><span><span style=color:#6272a4>//   if (digitalRead(buttonPin) == LOW) {
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>//     if (pressReadLimit == 0) {
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>//       pressTime = millis();
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>//       pressReadLimit = 1;
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>//     }
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>//     duration = millis() - pressTime;
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>//     if (duration &gt;= 3000) {
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>//       Serial.println(&#34;Long press&#34;);
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>//     }
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>//     Serial.println(duration);
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>//   } else {
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>//     duration = 0;
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>//     pressReadLimit = 0;
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>//   }
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>// }
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>// unsigned long time;
+</span></span></span><span style=display:flex><span><span style=color:#6272a4>// unsigned long display_refresh;
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>
+</span></span><span style=display:flex><span><span style=color:#8be9fd>void</span> <span style=color:#50fa7b>loop</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>// read the state of the pushbutton and sensor
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>  buttonState <span style=color:#ff79c6>=</span> digitalRead(buttonPin);
+</span></span><span style=display:flex><span>  moistureLevel <span style=color:#ff79c6>=</span> mS17.read();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  Serial.println(millis() <span style=color:#ff79c6>-</span> display_refresh);
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>// if (millis() - display_refresh &gt; 500){ // Moved display refresh to bottom of loop
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    display_refresh <span style=color:#ff79c6>=</span> millis();
+</span></span><span style=display:flex><span>    display.clearDisplay();
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    display.setCursor(<span style=color:#bd93f9>12</span>, <span style=color:#bd93f9>2</span>);
+</span></span><span style=display:flex><span>    display.setTextSize(<span style=color:#bd93f9>2</span>);
+</span></span><span style=display:flex><span>    display.println(<span style=color:#f1fa8c>&#34;Moisture %&#34;</span>);
+</span></span><span style=display:flex><span>    display.setTextSize(<span style=color:#bd93f9>3</span>);
+</span></span><span style=display:flex><span>    display.setCursor(<span style=color:#bd93f9>20</span>, <span style=color:#bd93f9>32</span>);
+</span></span><span style=display:flex><span>    display.println(moistureLevel);
+</span></span><span style=display:flex><span>    display.display();
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>// }
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>if</span> (moistureLevel <span style=color:#ff79c6>&lt;</span> <span style=color:#bd93f9>60</span>){
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>if</span> (millis() <span style=color:#ff79c6>-</span> pump_refresh <span style=color:#ff79c6>&gt;</span> <span style=color:#bd93f9>60000</span>){ <span style=color:#6272a4>// 60 seconds
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>      pump_start <span style=color:#ff79c6>=</span> millis();
+</span></span><span style=display:flex><span>      <span style=color:#6272a4>// start_pump      
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>      digitalWrite(A1A, HIGH);   
+</span></span><span style=display:flex><span>      digitalWrite(A1B, LOW);
+</span></span><span style=display:flex><span>      delay(<span style=color:#bd93f9>3000</span>);
+</span></span><span style=display:flex><span>      digitalWrite(A1A, LOW);   
+</span></span><span style=display:flex><span>      digitalWrite(A1B, LOW);   
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#6272a4>// stop pump
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>      pump_refresh <span style=color:#ff79c6>=</span> millis();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6272a4>// if (millis() - pump_start &gt; 3000){
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    <span style=color:#6272a4>//   digitalWrite(A1A, LOW);   
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    <span style=color:#6272a4>//   digitalWrite(A1B, LOW);      
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    <span style=color:#6272a4>// }
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>if</span> (moistureLevel <span style=color:#ff79c6>&gt;</span> <span style=color:#bd93f9>60</span>){
+</span></span><span style=display:flex><span>    pump_start <span style=color:#ff79c6>=</span> millis(); <span style=color:#6272a4>// reset pump start
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    <span style=color:#6272a4>// Shut off pump
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    digitalWrite(A1A, LOW);   
+</span></span><span style=display:flex><span>    digitalWrite(A1B, LOW);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>// check if the pushbutton is pressed. If it is, the buttonState is HIGH:
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>  <span style=color:#ff79c6>if</span> (buttonState <span style=color:#ff79c6>==</span> HIGH) {
+</span></span><span style=display:flex><span>    digitalWrite(ledPin, HIGH);
+</span></span><span style=display:flex><span>  } <span style=color:#ff79c6>else</span> {
+</span></span><span style=display:flex><span>    digitalWrite(ledPin, LOW);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>// TODO: add a recalibration system if button is continuously pressed for longer than 5 seconds.
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>
+</span></span><span style=display:flex><span>  delay(<span style=color:#bd93f9>100</span>); <span style=color:#6272a4>// display refresh rate
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>}
+</span></span></code></pre></div></details></article></div><hr class="relative h-px my-8 bg-gray-200 border-0 dark:bg-gray-700 max-w-4xl mx-auto"><div class="giscus w-full mx-auto pt-4 max-w-4xl"><script>function changeGiscusTheme(){const e=document.documentElement.getAttribute("class")==="dark"?"light":"dark";function t(e){const t=document.querySelector("iframe.giscus-frame");if(!t)return;t.contentWindow.postMessage({giscus:e},"https://giscus.app")}t({setConfig:{theme:e}})}const modeToggle=document.querySelector(".toggle-dark-mode");modeToggle&&modeToggle.addEventListener("click",changeGiscusTheme)</script><script>let giscusTheme=localStorage.getItem("darkmode"),giscusAttributes={src:"https://giscus.app/client.js","data-repo":"geometrikz/ps70","data-repo-id":"R_kgDOI6narQ","data-category":"Announcements","data-category-id":"DIC_kwDOI6narc4CUEG2","data-mapping":"title","data-strict":"0","data-reactions-enabled":"1","data-emit-metadata":"0","data-input-position":"top","data-theme":giscusTheme,"data-lang":"en",crossorigin:"anonymous",async:""},giscusScript=document.createElement("script");Object.entries(giscusAttributes).forEach(([e,t])=>giscusScript.setAttribute(e,t)),document.body.appendChild(giscusScript)</script></div></main><footer class="container p-6 mx-auto flex justify-between items-center"><span class="text-sm font-light">2023 © PS70: Intro to Digital Fabrication</span>
+<span onclick='window.scrollTo({top:0,behavior:"smooth"})' class="p-1 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 15l-6-6-6 6h12"/></svg></span></footer><div class="search-ui absolute top-0 left-0 w-full h-full bg-white dark:bg-gray-800 hidden"><div class="container max-w-3xl mx-auto p-12"><div class=relative><div class="my-4 text-center text-2xl font-bold">Search</div><span class="p-2 absolute right-0 top-0 cursor-pointer close-search"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></div><input type=search class="py-2 px-3 w-full dark:text-black border dark:border-transparent" placeholder="Enter search query"><div class="search-results text-lg font-medium my-4 hidden">Results</div><ul class="search-list my-2"></ul><div class="no-results text-center my-8 hidden"><div class="text-xl font-semibold mb-2">No results found</div><p class="font-light text-sm">Try adjusting your search query</p></div></div></div><script src=https://geometrikz.github.io/PS70/js/scripts.min.js></script>
+<script>const darkmode=document.querySelector(".toggle-dark-mode");function toggleDarkMode(){document.documentElement.classList.contains("dark")?(document.documentElement.classList.remove("dark"),localStorage.setItem("darkmode","light")):(document.documentElement.classList.add("dark"),localStorage.setItem("darkmode","dark"))}darkmode&&darkmode.addEventListener("click",toggleDarkMode);const darkStorage=localStorage.getItem("darkmode"),isBrowserDark=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;!darkStorage&&isBrowserDark&&document.documentElement.classList.add("dark"),darkStorage&&darkStorage==="dark"&&toggleDarkMode()</script><script>const mobileMenuButton=document.querySelector(".mobile-menu-button"),mobileMenu=document.querySelector(".mobile-menu");function toggleMenu(){mobileMenu.classList.toggle("hidden"),mobileMenu.classList.toggle("flex")}mobileMenu&&mobileMenuButton&&mobileMenuButton.addEventListener("click",toggleMenu)</script></body></html>
