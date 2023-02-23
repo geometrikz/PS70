@@ -42,6 +42,7 @@ To check whether or not the OLED display is connected to the right GPIO ports, t
 
 <details>
     <summary> Code for I2C Checker </summary>
+
 ```cpp
 /*********
   Rui Santos
@@ -89,7 +90,6 @@ void loop() {
   delay(5000);          
 }
 ```
-
 </details>
 
 If using pins other than the default GPIO21 and GPIO22, the `Wire.begin(SDA, SCL)` function can be used, since we are using GPIO8 and GPIO9, `Wire.begin(8, 9)` is used in the `setup()` function. The code will output the I2C address of any devices connected to the I2C bus. For my device, the I2C address is `0x3C`, keep this address in mind for later.
@@ -162,6 +162,7 @@ I wrote a class `moistureSensor` to store the moisture sensor calibration data (
     // return true;
     }
   ```
+
 </details>
 
 ### Outputting to OLED display
