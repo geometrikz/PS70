@@ -171,8 +171,6 @@ To output to the OLED display, the `Adafruit_SSD1306` and `Adafruit GFX` library
 
 To make the display output text in a prettier way, I wrote a typewriter animation function that prints text to display one character at a time.
 
-
-
 ## Putting it all together
 
 To put all these things together, I wrote a function that allows you to calibrate the moisture sensor by pressing a button. When plugging in the ESP32, the OLED display will display the steps needed to calibrate the moisture sensor. The button needs to be pressed to get a 0% moisture reading and pressed again to get a 100% moisture reading. In a future iteration, I plan to make the calibration process more accurate by pressing and holding the button for 3 seconds and take the average calibration value over that time.
@@ -189,7 +187,7 @@ After calibrating the sensor, the pump will automatically turn on for 3 seconds 
 <details>
     <summary>Video </summary>
     <center>
-    <video src="/images/IMG_6987.MOV" controls="controls" style="max-width: 480px">
+    <video src="/images/IMG_6987.mov" controls="controls" style="max-width: 480px">
     </center>
 </video>
 </details>
