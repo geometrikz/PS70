@@ -48,7 +48,7 @@ And the torus, which I printed using custom support settings (in PrusaSlicer pri
 0.2mm interface layer spacing
 ```
 
-{{< figure src="/images/voroi_torus.png" title="Voroi Torus" >}}
+{{< figure src="/images/voroi_torus_print.png" title="Voroi Torus" >}}
 
 <a href='/files/Klein_Bottle_v4_voro.stl'>Download my STL file </a>
 
