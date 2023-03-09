@@ -3,7 +3,7 @@ author: "Geoffrey Liu"
 title: "Week 6: Electronic Input Devices"
 date: 2023-02-27
 description: "3D Positioning and my own water sensor"
-thumbnail: /images/w6_featured.png
+thumbnail: /images/w6_featured.jpg
 ---
 
 We covered various types of capacitive sensors this week, I use charged copper sheets to create my own water-level sensor and also tacked 3D positoning using an the MPU6050.
