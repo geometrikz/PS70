@@ -229,7 +229,7 @@ The sensor works by using the difference in conductivity of water and air, and t
 
 I used a standard TX-RX circuit schematic which is shown here. Take careful note that at a wire cross-section joined wires are marked with a solid black dot, and unjoined wires do not have a solid dot (see [here](https://commons.wikimedia.org/wiki/File:Wire_Crossover_Symbols_for_Circuit_Diagrams.png))
 
-![w6_sensor_schematic](/images/w6_sensor_schematic.png)
+![w6_sensor_schematic](/images/w6_sensor schematic.png)
 
 ### Calibration
 
@@ -342,4 +342,5 @@ void loop() {
 
 }
 ```
+
 </details>
