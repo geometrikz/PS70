@@ -3,6 +3,7 @@ author: "Geoffrey Liu"
 title: "Week 6: Electronic Input Devices"
 date: 2023-02-27
 description: "3D Positioning and my own water sensor"
+thumbnail: /images/w6_featured.png
 ---
 
 We covered various types of capacitive sensors this week, I use charged copper sheets to create my own water-level sensor and also tacked 3D positoning using an the MPU6050.
@@ -40,6 +41,8 @@ GyroZ:0.46
 ```
 
 Laying the sensor flat on a table, we can see that the accelerometer reads $10.24m/s^2$ in the z-direction, and $0.54m/s^2$ in the x-direction and $0.24m/s^2$ in the y-direction. The gyroscope reads 0.46rad/s in the z-direction, and 0.17rad/s in the y-direction and -0.04rad/s in the x-direction. This is a good start, but we can do better.
+
+![w6_gyro](/images/w6_gyro_plot.gif)
 
 We can also calibrate the sensor by using gravity as a reference for all 6 sides of the sensor. If the sensor is perfectly linear, then we should expect that the accelerometer also reads $-10.24m/s^2$ in the z-direction if it is flipped over by 180 degrees along the $x$ or $y$ axis. We can also repeat this for the X and Y axes. After doing this, it does not seem like the sensor is linear, furthermore the axes don't appear to be independent (however I have to give the sensor the benefit of the doubt because when doing the tests my level reference may not truly be perpendicular to gravity). The gyroscope appears to give consistent offsets when the sensor isn't moving which is a good sign.
 
@@ -218,7 +221,7 @@ After calibration, we can extract the orientation and approximate 3D position by
 
 Using the copper sheets, I made my own capacitative water-level sensor. The schematic and a picture of the sensor is shown below.
 
-![Capacitative sensor](/images/w2_6.png)
+![Capacitative sensor](/images/w6_1.jpeg)
 
 The sensor works by using the difference in conductivity of water and air, and the capacitance of the copper sheets. Then by using transmit-receive (TX-RX) capacitive sensing, we can measure the change in conductivity as the air is displaced with liquid. Our readings should increase as the water level increases.
 
@@ -233,3 +236,110 @@ I used a standard TX-RX circuit schematic which is shown here. Take careful note
 To calibrate the sensor, I found a plastic cup with milliliter measurement markings on the side, this allowed me to easily calibrate my water-level sensor since I can take an analogue reading. I wrote some code to take an average of 10,000 readings and prints it out to the serial monitor when a button is pressed. To calibrate the sensor, all I had to do was fill up the cup with different water levels, press the button and record the reading and repeat. This allowed for minimal ambiguity in how to read the sensor value. There appears to be a logarithmic relationship between the water level and the sensor readings.
 
 ![Water Level Calibration](/images/w6_sensor1.png)
+
+
+<details>
+<summary>Code</summary>
+
+```cpp
+const int buttonPin = 1; 
+int buttonState = 0;
+int timer = 0;
+int data = 0;
+int already_read = 0;
+
+// Define capacitor class
+
+class Capacitor{
+  int tx_pin;  //Top capacitor plate
+  int rx_pin;  //Bottom capacitor plate
+  int high_read; //Read when top plate is charging
+  int low_read; //Read the resulting discharge of the top plate
+  int N_samples = 1000;
+  int diff;  //Find the difference between the reading the bottom plate gets when the top plate is charging and then discharges to get the result
+  long result;
+  int tx_state; //Is the top plate charging?
+  unsigned long previousMicros;
+  long capTime; //How long I want the top plate to charge
+
+  public:
+  Capacitor(int tp, int rp, int interval){  //Declare inputs into my class
+    tx_pin = tp;
+    rx_pin = rp;
+    capTime = interval;
+    previousMicros = 0;
+    
+    pinMode(tx_pin, OUTPUT);
+  }
+  long Update()
+  {
+    unsigned long currentMicros = micros(); //Get current time
+    result = 0; //Reset the result
+    //Read N samples and take the sum of the readings
+    for(int i = 0; i<N_samples; i++){
+      currentMicros = micros();
+      //Charge the top plate
+      digitalWrite(tx_pin,HIGH);
+      tx_state = HIGH;
+      high_read = analogRead(rx_pin); //See what the bottom plate is reading
+
+      //Time charging the tx plate
+      if((tx_state == HIGH) && (currentMicros - previousMicros >= capTime)){ //If the top plate has been charging and it is now time to discharge
+        previousMicros = currentMicros;
+        digitalWrite(tx_pin,LOW);
+        tx_state = LOW;
+        low_read = analogRead(rx_pin); //See what the bottom plate is reading now
+        diff = high_read - low_read;
+        result += diff;
+      }
+    }
+    return result;
+  }
+
+};
+Capacitor cap1(4,A3,1000); //TX on Pin 4, RX on Pin A3, charge the top plate for 100 microseconds
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  buttonState = digitalRead(buttonPin);
+  digitalWrite(LED_BUILTIN, LOW);
+  // Serial.println(buttonState);
+  Serial.println('Waiting for values');
+  while(buttonState == LOW){
+    buttonState = digitalRead(buttonPin);
+    if (micros() - timer > 1000000){
+      Serial.print(".");
+      timer = micros();
+    }
+  }
+  already_read = 0;
+  while (buttonState == HIGH){
+    buttonState = digitalRead(buttonPin);
+    if (already_read == 0){
+      Serial.println("Reading values");
+      digitalWrite(LED_BUILTIN, HIGH);
+      data = cap1.Update();
+      Serial.println(data);
+      already_read = 1;
+    }
+
+  }
+
+  Serial.println("Press button for next reading");
+  while(buttonState == LOW){
+    buttonState = digitalRead(buttonPin);
+    if (micros() - timer > 1000000){
+      Serial.print(".");
+      timer = micros();
+    }
+  }
+
+}
+```
+</details>
