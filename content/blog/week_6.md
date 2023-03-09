@@ -204,9 +204,9 @@ Coming back to the DMP... the electronic cats library allows us to access the DM
 Con: It appears that the DMP on the MPU6050 uses a proprietary algorithm, and source code isn't available to understand how the sensors are combined. It is not the most accurate sensor-fusion algorithm out there.
 Pro: Sensor fusion processing can be quite costly, especially if many sensors are used with a single micro-controller. The DMP takes all sensor-fusion calculations off the microprocessor, freeing up processing power for other stuff.
 
-### Orientation
+### Orientation & 3D positioning
 
-### 3D positioning (dead-reckoning)
+After calibration, we can extract the orientation and approximate 3D position by reading from the DMP and double integration of the acceleration values, however this isn't particularly straight forward. Since I ran out of time in this weeks documentation and this section isn't technically part of the assignment requirements, I will aim to complete this later.
 
 ## Self-fabricated water-level sensor
 ### Materials
@@ -221,6 +221,12 @@ Using the copper sheets, I made my own capacitative water-level sensor. The sche
 ![Capacitative sensor](/images/w2_6.png)
 
 The sensor works by using the difference in conductivity of water and air, and the capacitance of the copper sheets. Then by using transmit-receive (TX-RX) capacitive sensing, we can measure the change in conductivity as the air is displaced with liquid. Our readings should increase as the water level increases.
+
+### Circuit schematic
+
+I used a standard TX-RX circuit schematic which is shown here. Take careful note that at a wire cross-section joined wires are marked with a solid black dot, and unjoined wires do not have a solid dot (see [here](https://commons.wikimedia.org/wiki/File:Wire_Crossover_Symbols_for_Circuit_Diagrams.png))
+
+![w6_sensor_schematic](/images/w6_sensor_schematic.png)
 
 ### Calibration
 
