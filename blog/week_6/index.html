@@ -1,0 +1,146 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=https://geometrikz.github.io/PS70/favicon.ico><title>Week 6: Electronic Input Devices - PS70: Intro to Digital Fabrication</title><meta name=description content="3D Positioning and my own water sensor"><meta name=author content="Geoffrey Liu"><meta name=generator content="Hugo 0.111.2"><link rel=stylesheet href="https://geometrikz.github.io/PS70/css/styles.min.b4ab39712f3739c39ef142c03628cc3e220d92e88bd8a2fec843cfbe6c05b8e0.css" integrity="sha256-tKs5cS83OcOe8ULANijMPiINkuiL2KL+yEPPvmwFuOA="><meta property="og:title" content="Week 6: Electronic Input Devices"><meta property="og:description" content="3D Positioning and my own water sensor"><meta property="og:type" content="article"><meta property="og:url" content="https://geometrikz.github.io/PS70/blog/week_6/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2023-02-27T00:00:00+00:00"><meta property="article:modified_time" content="2023-02-27T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Week 6: Electronic Input Devices"><meta name=twitter:description content="3D Positioning and my own water sensor"><meta itemprop=name content="Week 6: Electronic Input Devices"><meta itemprop=description content="3D Positioning and my own water sensor"><meta itemprop=datePublished content="2023-02-27T00:00:00+00:00"><meta itemprop=dateModified content="2023-02-27T00:00:00+00:00"><meta itemprop=wordCount content="1302"><meta itemprop=keywords content></head><body class="dark:bg-gray-800 dark:text-white relative flex flex-col min-h-screen"><header class="container flex justify-between md:justify-between gap-4 flex-wrap p-6 mx-auto relative"><a href=https://geometrikz.github.io/PS70/ class="capitalize font-extrabold text-2xl">PS70: Intro to Digital Fabrication</a>
+<button class="mobile-menu-button md:hidden"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg></button><ul class="mobile-menu absolute z-10 px-6 pb-6 md:p-0 top-full left-0 w-full md:w-auto md:relative hidden md:flex flex-col md:flex-row items-end md:items-center gap-4 lg:gap-6 bg-white dark:bg-gray-800"><li><a href=https://geometrikz.github.io/PS70/blog>Project</a></li><li><a href=https://geometrikz.github.io/PS70/page/about/>About</a></li><li class="grid place-items-center"><span class="open-search inline-block cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg></span></li><li class="grid place-items-center"><span class="toggle-dark-mode inline-block cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="5" x2="12" y2="5.01"/><line x1="17" y1="7" x2="17" y2="7.01"/><line x1="19" y1="12" x2="19" y2="12.01"/><line x1="17" y1="17" x2="17" y2="17.01"/><line x1="12" y1="19" x2="12" y2="19.01"/><line x1="7" y1="17" x2="7" y2="17.01"/><line x1="5" y1="12" x2="5" y2="12.01"/><line x1="7" y1="7" x2="7" y2="7.01"/></svg></span></li></ul></header><main class=flex-1><div class="container flex justify-between md:justify-between gap-4 flex-wrap p-10 mx-auto relative"><article class="prose lg:prose-lg my-8 dark:prose-dark px-4 max-w-4xl mx-auto"><h1 class="text-2xl font-bold mb-2">Week 6: Electronic Input Devices</h1><details id=TableOfContents class="px-4 mt-4 bg-gray-100 dark:bg-gray-700 rounded toc"><summary class="flex items-center font-bold py-2 px-4 cursor-pointer justify-between select-none text-black dark:text-white"><span>Table of contents</span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="6 9 12 15 18 9"/></svg></summary><ul class="mt-2 pb-4"><li><a href=#items>Items</a></li><li><a href=#3d-positioning-with-the-mpu6050>3D positioning with the MPU6050</a></li><li><a href=#calibration>Calibration</a><ul><li><a href=#adafruit-mpu6050-library>Adafruit MPU6050 Library</a></li><li><a href=#electronic-cats-library>Electronic Cats library</a></li><li><a href=#sensor-fusion>Sensor fusion</a></li><li><a href=#orientation>Orientation</a></li><li><a href=#3d-positioning-dead-reckoning>3D positioning (dead-reckoning)</a></li></ul></li><li><a href=#self-fabricated-water-level-sensor>Self-fabricated water-level sensor</a><ul><li><a href=#materials>Materials</a></li><li><a href=#calibration-1>Calibration</a></li></ul></li></ul></details><p>We covered various types of capacitive sensors this week, I use charged copper sheets to create my own water-level sensor and also tacked 3D positoning using an the MPU6050.</p><h2 id=items>Items</h2><ul><li>MPU6050 (or another 6-9 axis IMU)</li><li>Breadboard</li><li>ESP32</li><li>Wires</li></ul><h2 id=3d-positioning-with-the-mpu6050>3D positioning with the MPU6050</h2><p>At the start of the week, I thought a great idea would be to get a 3D positioning. The idea is that I could use the acceleration and gyroscope readings from the MPU6050, apply some fancy filters and data-processing to somehow get a more accurate reading, and double-integrate the processed acceleration values to obtain the 3D displacement.</p><p>$$ \dot{x}(t) = \int_0^t \ddot{x}(t) dt \implies v(t) = v(0) + at$$
+$$ x = \int \dot{x}(t) dt = \int \int \ddot{x} dt \implies x(t) = x(0) + v(0)t + 0.5at^2$$</p><h2 id=calibration>Calibration</h2><p>To calibrate the sensor, we first need to know how the gyro and accelerometer work. The accelerometer reads the force on a small mass relative to its own rest frame, so a stationary accelerometer should read 1G (9.81m/s) in the z-direction and 0G in the x and y directions. In free-fall, it would read 0G&rsquo;s in all directions. The gyro reads the angular velocity of the sensor, so a stationary gyro should read 0 in all directions. The accelerometer provides an absolute measurement (not relative to an initial value) while the gyroscope is a relative measurement (measurement is relative to an initial value).</p><h3 id=adafruit-mpu6050-library>Adafruit MPU6050 Library</h3><p>The first thing we need to do is calibrate the sensor. This is because the sensor is not perfect, and will have some offset in the readings when stationary. There wasn&rsquo;t really a best-practice for calibrating the sensor. The Adafruit library examples output numbers in $m/s^2$ for the accelerometer and $rad/s$ for the gyroscope. We can do this by taking the average of the readings over a period of time, and subtracting that from the readings.</p><pre tabindex=0><code>Offsets
+AccelX:0.54
+AccelY:0.24
+AccelZ:10.24
+GyroX:-0.04
+GyroY:0.17
+GyroZ:0.46
+</code></pre><p>Laying the sensor flat on a table, we can see that the accelerometer reads $10.24m/s^2$ in the z-direction, and $0.54m/s^2$ in the x-direction and $0.24m/s^2$ in the y-direction. The gyroscope reads 0.46rad/s in the z-direction, and 0.17rad/s in the y-direction and -0.04rad/s in the x-direction. This is a good start, but we can do better.</p><p>We can also calibrate the sensor by using gravity as a reference for all 6 sides of the sensor. If the sensor is perfectly linear, then we should expect that the accelerometer also reads $-10.24m/s^2$ in the z-direction if it is flipped over by 180 degrees along the $x$ or $y$ axis. We can also repeat this for the X and Y axes. After doing this, it does not seem like the sensor is linear, furthermore the axes don&rsquo;t appear to be independent (however I have to give the sensor the benefit of the doubt because when doing the tests my level reference may not truly be perpendicular to gravity). The gyroscope appears to give consistent offsets when the sensor isn&rsquo;t moving which is a good sign.</p><pre tabindex=0><code>Offsets
+AccelX:0.54
+AccelY:0.24
+AccelZ:10.24
+GyroX:-0.04
+GyroY:0.17
+GyroZ:0.46
+
+AccelX:1.48
+AccelY:0.10
+AccelZ:-9.69
+GyroX:-0.04
+GyroY:0.17
+GyroZ:0.46
+
+Offsets
+AccelX:0.70
+AccelY:-9.78
+AccelZ:-0.06
+GyroX:-0.04
+GyroY:0.17
+GyroZ:0.46
+
+Offsets
+AccelX:0.80
+AccelY:9.87
+AccelZ:0.08
+GyroX:-0.04
+GyroY:0.17
+GyroZ:0.46
+
+Offsets
+AccelX:10.62
+AccelY:-0.01
+AccelZ:0.39
+GyroX:-0.04
+GyroY:0.16
+GyroZ:0.46
+
+Offsets
+AccelX:-8.93
+AccelY:-0.14
+AccelZ:-0.10
+GyroX:-0.04
+GyroY:0.17
+GyroZ:0.46
+</code></pre><details><summary>Code for calibration</summary><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#6272a4>// Basic demo for accelerometer readings from Adafruit MPU6050
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>#include</span> <span style=color:#ff79c6>&lt;Adafruit_MPU6050.h&gt;</span><span style=color:#ff79c6>
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6>#include</span> <span style=color:#ff79c6>&lt;Adafruit_Sensor.h&gt;</span><span style=color:#ff79c6>
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6>#include</span> <span style=color:#ff79c6>&lt;Wire.h&gt;</span><span style=color:#ff79c6>
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6></span>
+</span></span><span style=display:flex><span>Adafruit_MPU6050 mpu;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#8be9fd>void</span> <span style=color:#50fa7b>setup</span>(<span style=color:#8be9fd>void</span>) {
+</span></span><span style=display:flex><span>  Wire.begin(<span style=color:#bd93f9>16</span>, <span style=color:#bd93f9>17</span>);
+</span></span><span style=display:flex><span>  Serial.begin(<span style=color:#bd93f9>115200</span>);
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>while</span> (<span style=color:#ff79c6>!</span>Serial) {
+</span></span><span style=display:flex><span>    delay(<span style=color:#bd93f9>10</span>); <span style=color:#6272a4>// will pause Zero, Leonardo, etc until serial console opens
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>// Try to initialize!
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>  <span style=color:#ff79c6>if</span> (<span style=color:#ff79c6>!</span>mpu.begin()) {
+</span></span><span style=display:flex><span>    Serial.println(<span style=color:#f1fa8c>&#34;Failed to find MPU6050 chip&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>while</span> (<span style=color:#bd93f9>1</span>) {
+</span></span><span style=display:flex><span>      delay(<span style=color:#bd93f9>10</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  mpu.setAccelerometerRange(MPU6050_RANGE_16_G);
+</span></span><span style=display:flex><span>  mpu.setGyroRange(MPU6050_RANGE_250_DEG);
+</span></span><span style=display:flex><span>  mpu.setFilterBandwidth(MPU6050_BAND_21_HZ);
+</span></span><span style=display:flex><span>  Serial.println(<span style=color:#f1fa8c>&#34;&#34;</span>);
+</span></span><span style=display:flex><span>  delay(<span style=color:#bd93f9>100</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#8be9fd>void</span> <span style=color:#50fa7b>Update</span>(){
+</span></span><span style=display:flex><span>  <span style=color:#8be9fd>float</span> ax <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>;
+</span></span><span style=display:flex><span>  <span style=color:#8be9fd>float</span> ay <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>;
+</span></span><span style=display:flex><span>  <span style=color:#8be9fd>float</span> az <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>;
+</span></span><span style=display:flex><span>  <span style=color:#8be9fd>float</span> gx <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>;
+</span></span><span style=display:flex><span>  <span style=color:#8be9fd>float</span> gy <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>;
+</span></span><span style=display:flex><span>  <span style=color:#8be9fd>float</span> gz <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>;
+</span></span><span style=display:flex><span>  <span style=color:#8be9fd>float</span> currentMicros <span style=color:#ff79c6>=</span> micros();
+</span></span><span style=display:flex><span>  <span style=color:#8be9fd>float</span> n <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>;
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>while</span>(n<span style=color:#ff79c6>&lt;</span><span style=color:#bd93f9>1000</span>){
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>if</span> (micros() <span style=color:#ff79c6>-</span> currentMicros <span style=color:#ff79c6>&gt;</span> <span style=color:#bd93f9>100</span>){ <span style=color:#6272a4>// Get less correlated readings
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>      sensors_event_t a, g, temp;
+</span></span><span style=display:flex><span>      mpu.getEvent(<span style=color:#ff79c6>&amp;</span>a, <span style=color:#ff79c6>&amp;</span>g, <span style=color:#ff79c6>&amp;</span>temp);
+</span></span><span style=display:flex><span>      ax <span style=color:#ff79c6>+=</span> a.acceleration.x;
+</span></span><span style=display:flex><span>      ay <span style=color:#ff79c6>+=</span> a.acceleration.y;
+</span></span><span style=display:flex><span>      az <span style=color:#ff79c6>+=</span> a.acceleration.z;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      gx <span style=color:#ff79c6>+=</span> g.gyro.x;
+</span></span><span style=display:flex><span>      gy <span style=color:#ff79c6>+=</span> g.gyro.y;
+</span></span><span style=display:flex><span>      gz <span style=color:#ff79c6>+=</span> g.gyro.z;
+</span></span><span style=display:flex><span>      
+</span></span><span style=display:flex><span>      currentMicros <span style=color:#ff79c6>=</span> micros();
+</span></span><span style=display:flex><span>      n <span style=color:#ff79c6>+=</span> <span style=color:#bd93f9>1</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  ax <span style=color:#ff79c6>=</span> ax<span style=color:#ff79c6>/</span><span style=color:#bd93f9>1000</span>;
+</span></span><span style=display:flex><span>  ay <span style=color:#ff79c6>=</span> ay<span style=color:#ff79c6>/</span><span style=color:#bd93f9>1000</span>;
+</span></span><span style=display:flex><span>  az <span style=color:#ff79c6>=</span> az<span style=color:#ff79c6>/</span><span style=color:#bd93f9>1000</span>;
+</span></span><span style=display:flex><span>  gx <span style=color:#ff79c6>=</span> gx<span style=color:#ff79c6>/</span><span style=color:#bd93f9>1000</span>;
+</span></span><span style=display:flex><span>  gy <span style=color:#ff79c6>=</span> gy<span style=color:#ff79c6>/</span><span style=color:#bd93f9>1000</span>;
+</span></span><span style=display:flex><span>  gz <span style=color:#ff79c6>=</span> gz<span style=color:#ff79c6>/</span><span style=color:#bd93f9>1000</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  Serial.println(<span style=color:#f1fa8c>&#34;Offsets&#34;</span>);
+</span></span><span style=display:flex><span>  Serial.print(<span style=color:#f1fa8c>&#34;AccelX:&#34;</span>);
+</span></span><span style=display:flex><span>  Serial.println(ax);
+</span></span><span style=display:flex><span>  Serial.print(<span style=color:#f1fa8c>&#34;AccelY:&#34;</span>);
+</span></span><span style=display:flex><span>  Serial.println(ay);
+</span></span><span style=display:flex><span>  Serial.print(<span style=color:#f1fa8c>&#34;AccelZ:&#34;</span>);
+</span></span><span style=display:flex><span>  Serial.println(az);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  Serial.print(<span style=color:#f1fa8c>&#34;GyroX:&#34;</span>);
+</span></span><span style=display:flex><span>  Serial.println(gx);
+</span></span><span style=display:flex><span>  Serial.print(<span style=color:#f1fa8c>&#34;GyroY:&#34;</span>);
+</span></span><span style=display:flex><span>  Serial.println(gy);
+</span></span><span style=display:flex><span>  Serial.print(<span style=color:#f1fa8c>&#34;GyroZ:&#34;</span>);
+</span></span><span style=display:flex><span>  Serial.println(gz);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#8be9fd>void</span> <span style=color:#50fa7b>loop</span>() {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>/* Get new sensor events with the readings */</span>
+</span></span><span style=display:flex><span>  Update();
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></details><p><img src=https://geometrikz.github.io/PS70/images/w6_sensor2.png alt="IMU calibration"></p><h3 id=electronic-cats-library>Electronic Cats library</h3><p>The Adafruit library is quite limiting in that it&rsquo;s not really easy to decipher what goes on in the background, so after calibrating using the Adafruit library, I decided to try out the Electronic Cats library. The Electronic Cats library is much more flexible, it allows you to read raw values and also has functions that allow you to specify your sensor offsets. However, they only allow single offset values for each axis and thus don&rsquo;t allow for non-linear calibration. One of the major benefits of the Electronic Cats library is accessing the Digital Motion Processor (DMP) (which will be explained below).</p><h3 id=sensor-fusion>Sensor fusion</h3><p>Sensor fusion is the process of combining multiple sensors to get a more accurate reading. In our case, we are able to use the accelerometer readings to get a more accurate rotational reading compared to only relying on the gyroscope. The idea is that we integrate the gyroscope (since it is a relative measure) to get the change in orientation of the sensor. We can also use the acceleration readings to get a noisy absolute measure of orientation by assuming that total acceleration magnitude is 1G (when stationary) to obtain partial orientation information (pitch and roll, however yaw is unidentifiable through accelerometer readings). These calculations are relatively complex and I won&rsquo;t explain them here but it is well documented in <a href=https://yichaozhou.com/post/20220123altitude_filter/ target=_blank rel=noopener>this blog post</a>
+. There are many filters that you could use here, Kalman (plus extended variants) as well as <a href=https://github.com/xioTechnologies/Fusion target=_blank rel=noopener>Madgwick (plus extensions)</a>
+are popular.</p><p>Coming back to the DMP&mldr; the electronic cats library allows us to access the DMP which does all this sensor fusion for us. After doing some research, there are some pros and cons to relying on the DMP.</p><p>Con: It appears that the DMP on the MPU6050 uses a proprietary algorithm, and source code isn&rsquo;t available to understand how the sensors are combined. It is not the most accurate sensor-fusion algorithm out there.
+Pro: Sensor fusion processing can be quite costly, especially if many sensors are used with a single micro-controller. The DMP takes all sensor-fusion calculations off the microprocessor, freeing up processing power for other stuff.</p><h3 id=orientation>Orientation</h3><h3 id=3d-positioning-dead-reckoning>3D positioning (dead-reckoning)</h3><h2 id=self-fabricated-water-level-sensor>Self-fabricated water-level sensor</h2><h3 id=materials>Materials</h3><ul><li>Copper sheet</li><li>Plastic cup (with volumetric markings, or scale if using unmarked cup)</li><li>Alligator clips</li><li>2x10MOhm sensor</li></ul><p>Using the copper sheets, I made my own capacitative water-level sensor. The schematic and a picture of the sensor is shown below.</p><p><img src=https://geometrikz.github.io/PS70/images/w2_6.png alt="Capacitative sensor"></p><p>The sensor works by using the difference in conductivity of water and air, and the capacitance of the copper sheets. Then by using transmit-receive (TX-RX) capacitive sensing, we can measure the change in conductivity as the air is displaced with liquid. Our readings should increase as the water level increases.</p><h3 id=calibration-1>Calibration</h3><p>To calibrate the sensor, I found a plastic cup with milliliter measurement markings on the side, this allowed me to easily calibrate my water-level sensor since I can take an analogue reading. I wrote some code to take an average of 10,000 readings and prints it out to the serial monitor when a button is pressed. To calibrate the sensor, all I had to do was fill up the cup with different water levels, press the button and record the reading and repeat. This allowed for minimal ambiguity in how to read the sensor value. There appears to be a logarithmic relationship between the water level and the sensor readings.</p><p><img src=https://geometrikz.github.io/PS70/images/w6_sensor1.png alt="Water Level Calibration"></p></article></div><hr class="relative h-px my-8 bg-gray-200 border-0 dark:bg-gray-700 max-w-4xl mx-auto"><div class="giscus w-full mx-auto pt-4 max-w-4xl"><script>function changeGiscusTheme(){const e=document.documentElement.getAttribute("class")==="dark"?"light":"dark";function t(e){const t=document.querySelector("iframe.giscus-frame");if(!t)return;t.contentWindow.postMessage({giscus:e},"https://giscus.app")}t({setConfig:{theme:e}})}const modeToggle=document.querySelector(".toggle-dark-mode");modeToggle&&modeToggle.addEventListener("click",changeGiscusTheme)</script><script>let giscusTheme=localStorage.getItem("darkmode"),giscusAttributes={src:"https://giscus.app/client.js","data-repo":"geometrikz/ps70","data-repo-id":"R_kgDOI6narQ","data-category":"Announcements","data-category-id":"DIC_kwDOI6narc4CUEG2","data-mapping":"title","data-strict":"0","data-reactions-enabled":"1","data-emit-metadata":"0","data-input-position":"top","data-theme":giscusTheme,"data-lang":"en",crossorigin:"anonymous",async:""},giscusScript=document.createElement("script");Object.entries(giscusAttributes).forEach(([e,t])=>giscusScript.setAttribute(e,t)),document.body.appendChild(giscusScript)</script></div></main><footer class="container p-6 mx-auto flex justify-between items-center"><span class="text-sm font-light">2023 © PS70: Intro to Digital Fabrication</span>
+<span onclick='window.scrollTo({top:0,behavior:"smooth"})' class="p-1 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 15l-6-6-6 6h12"/></svg></span></footer><div class="search-ui absolute top-0 left-0 w-full h-full bg-white dark:bg-gray-800 hidden"><div class="container max-w-3xl mx-auto p-12"><div class=relative><div class="my-4 text-center text-2xl font-bold">Search</div><span class="p-2 absolute right-0 top-0 cursor-pointer close-search"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></div><input type=search class="py-2 px-3 w-full dark:text-black border dark:border-transparent" placeholder="Enter search query"><div class="search-results text-lg font-medium my-4 hidden">Results</div><ul class="search-list my-2"></ul><div class="no-results text-center my-8 hidden"><div class="text-xl font-semibold mb-2">No results found</div><p class="font-light text-sm">Try adjusting your search query</p></div></div></div><script src=https://geometrikz.github.io/PS70/js/scripts.min.js></script>
+<script>const darkmode=document.querySelector(".toggle-dark-mode");function toggleDarkMode(){document.documentElement.classList.contains("dark")?(document.documentElement.classList.remove("dark"),localStorage.setItem("darkmode","light")):(document.documentElement.classList.add("dark"),localStorage.setItem("darkmode","dark"))}darkmode&&darkmode.addEventListener("click",toggleDarkMode);const darkStorage=localStorage.getItem("darkmode"),isBrowserDark=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;!darkStorage&&isBrowserDark&&document.documentElement.classList.add("dark"),darkStorage&&darkStorage==="dark"&&toggleDarkMode()</script><script>const mobileMenuButton=document.querySelector(".mobile-menu-button"),mobileMenu=document.querySelector(".mobile-menu");function toggleMenu(){mobileMenu.classList.toggle("hidden"),mobileMenu.classList.toggle("flex")}mobileMenu&&mobileMenuButton&&mobileMenuButton.addEventListener("click",toggleMenu)</script></body></html>
