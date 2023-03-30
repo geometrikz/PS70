@@ -69,7 +69,7 @@ Here's the small everest mold I made, which has large air-pockets and the silico
 
 Here's a picture of all the moulds that I made, as well as a metal cast of Mount Fuji.
 
-![Moulds](/week8/moulds.jpgg)
+![Moulds](/week8/molds.jpgg)
 
 ## Wood Milling
 
