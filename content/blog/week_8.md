@@ -3,7 +3,7 @@ author: "Geoffrey Liu"
 title: "Week 8: CNC Milling, Molding & Casting"
 date: 2023-03-27
 description: "Wood CNC, wax molds, and silicone molds"
-thumbnail: 
+thumbnail: /week8/molds.jpg
 ---
 
 * I've always wanted ice-cubes in the shape of mountain ranges*
@@ -12,7 +12,7 @@ After some quick research I found this abomination of a 'Mount Fuji' ice-mold.
 
 ![Mount Fuji Ice Mold](https://cdn.thisiswhyimbroke.com/images/mount-fuji-ice-mold-alt-one.jpg)
 
-And a better one of Mount Everest that was $97. ![Mount Everest Ice Mold](/week8/everest_ice_example.png)
+And a better one of Mount Everest that was $97. ![Mount Everest Ice Mold](/week8/everest_ice_example.jpg)
 
 So this week I'm developing a process of making mountain-range ice-molds using CNC, 3D printing (unfortunately as CNC's didn't work out), and silicone molds.
 ## Making mountain ice/chocolate/plaster-molds
@@ -69,10 +69,10 @@ Here's the small everest mold I made, which has large air-pockets and the silico
 
 Here's a picture of all the moulds that I made, as well as a metal cast of Mount Fuji.
 
-![Moulds](/week8/molds.jpgg)
+![Moulds](/week8/molds.jpg)
 
 ## Wood Milling
 
 For wood milling, I wanted to create a simple 'Welcome' sign for my front door. I designed this in Illustrator but making a rounded rectangle, and font-outline. The final CNC is shown below. Some of the smaller details such as the 'e' broke off due to the wood quality.
 
-![welcome_sign](/week8/welcome_sign.png)
+![welcome_sign](/week8/welcome_sign.jpeg)
