@@ -67,11 +67,9 @@ The Mount Fuji mold worked out better because I stuck the 3D printed model strai
 
 Here's the small everest mold I made, which has large air-pockets and the silicon didn't get into all the mold.
 
-Here's a picture of all the moulds that I made. 
+Here's a picture of all the moulds that I made, as well as a metal cast of Mount Fuji.
 
-
-
-
+![Moulds](/week8/moulds.jpgg)
 
 ## Wood Milling
 
