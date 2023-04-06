@@ -1,0 +1,227 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=https://geometrikz.github.io/PS70/favicon.ico><title>Week 9: Networking - PS70: Intro to Digital Fabrication</title><meta name=description content="Creating laser tag (not using lasers)"><meta name=author content="Geoffrey Liu"><meta name=generator content="Hugo 0.111.3"><link rel=stylesheet href="https://geometrikz.github.io/PS70/css/styles.min.b4ab39712f3739c39ef142c03628cc3e220d92e88bd8a2fec843cfbe6c05b8e0.css" integrity="sha256-tKs5cS83OcOe8ULANijMPiINkuiL2KL+yEPPvmwFuOA="><meta property="og:title" content="Week 9: Networking"><meta property="og:description" content="Creating laser tag (not using lasers)"><meta property="og:type" content="article"><meta property="og:url" content="https://geometrikz.github.io/PS70/blog/week_9/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2023-04-03T00:00:00+00:00"><meta property="article:modified_time" content="2023-04-03T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Week 9: Networking"><meta name=twitter:description content="Creating laser tag (not using lasers)"><meta itemprop=name content="Week 9: Networking"><meta itemprop=description content="Creating laser tag (not using lasers)"><meta itemprop=datePublished content="2023-04-03T00:00:00+00:00"><meta itemprop=dateModified content="2023-04-03T00:00:00+00:00"><meta itemprop=wordCount content="970"><meta itemprop=keywords content></head><body class="dark:bg-gray-800 dark:text-white relative flex flex-col min-h-screen"><header class="container flex justify-between md:justify-between gap-4 flex-wrap p-6 mx-auto relative"><a href=https://geometrikz.github.io/PS70/ class="capitalize font-extrabold text-2xl">PS70: Intro to Digital Fabrication</a>
+<button class="mobile-menu-button md:hidden"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg></button><ul class="mobile-menu absolute z-10 px-6 pb-6 md:p-0 top-full left-0 w-full md:w-auto md:relative hidden md:flex flex-col md:flex-row items-end md:items-center gap-4 lg:gap-6 bg-white dark:bg-gray-800"><li><a href=https://geometrikz.github.io/PS70/blog>Project</a></li><li><a href=https://geometrikz.github.io/PS70/page/about/>About</a></li><li class="grid place-items-center"><span class="open-search inline-block cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg></span></li><li class="grid place-items-center"><span class="toggle-dark-mode inline-block cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="5" x2="12" y2="5.01"/><line x1="17" y1="7" x2="17" y2="7.01"/><line x1="19" y1="12" x2="19" y2="12.01"/><line x1="17" y1="17" x2="17" y2="17.01"/><line x1="12" y1="19" x2="12" y2="19.01"/><line x1="7" y1="17" x2="7" y2="17.01"/><line x1="5" y1="12" x2="5" y2="12.01"/><line x1="7" y1="7" x2="7" y2="7.01"/></svg></span></li></ul></header><main class=flex-1><div class="relative max-w-5xl mx-auto px-4"><img src=https://geometrikz.github.io/PS70/week9/featured.jpg class="rounded-lg shadow-sm w-full object-contain"></div><div class="container flex justify-between md:justify-between gap-4 flex-wrap p-10 mx-auto relative"><article class="prose lg:prose-lg my-8 dark:prose-dark px-4 max-w-4xl mx-auto"><h1 class="text-2xl font-bold mb-2">Week 9: Networking</h1><details id=TableOfContents class="px-4 mt-4 bg-gray-100 dark:bg-gray-700 rounded toc"><summary class="flex items-center font-bold py-2 px-4 cursor-pointer justify-between select-none text-black dark:text-white"><span>Table of contents</span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="6 9 12 15 18 9"/></svg></summary><ul class="mt-2 pb-4"><li><a href=#electronic-circuit>Electronic circuit</a></li><li><a href=#sensors>Sensors</a></li><li><a href=#networking>Networking</a></li><li><a href=#web-app>Web-app</a></li></ul></details><p>This week we wanted to recreate laser-tag using laser-pointers and photo-receivers. This didn&rsquo;t work too well, so we ended up using infrared (IR) LED&rsquo;s and IR photo-transistors instead.</p><p>I worked with Isaac and David on this project, and we split up the work into multiple parts:</p><ol><li>Web-app</li><li>Electronic circuit</li><li>Sensors</li><li>Physical design</li></ol><p>In my documentation I will focus on the parts that I understand the most: the web-app, setting up firebase, and the sensor.</p><h2 id=electronic-circuit>Electronic circuit</h2><p>For the laser shooter, we build a simple circuit using a button and a 555 circuit. The 555 circuit is used to generate a square wave, which is then used to drive the IR LED. The main purpose of this is to prohibit the user to have the laser-shooter on all the time. Instead, the 555 circuit creates pulses, so it makes it a little more difficult to hit the target.</p><p>The button is used to trigger the 555 circuit, which then turns on the IR LED for a short period of time. This is connected to a battery pack, so the shooter is completely wireless.</p><h2 id=sensors>Sensors</h2><p>The sensor is the only part of the system that needs a micro-controller. It uses a photo-transistor, wired up in a voltage divider circuit and the output is connected to an analog pin on the micro-controller. The micro-controller then reads the voltage and determines if the laser has hit the target.</p><h2 id=networking>Networking</h2><p>When the sensor reads a voltage that crosses a certain threshold, it reads player&rsquo;s score (the amount of times he&rsquo;s been hit by the IR LED) and increments it by one. It then sends the new score to a real-time database on firebase.</p><h2 id=web-app>Web-app</h2><p>A simple web-app is coded up, which displays the real-time score from Firebase between two players. Players can choose their names, and the web-app will display the score of each player. There is also a reset button which zero&rsquo;s out the scores of the two players, so they can restart the game.</p><p>A prototype demo is shown in the video below:</p><p><img src=https://geometrikz.github.io/PS70/week9/demo_v1.mov alt="Prototype demo"></p><p>The code got all the components is given below.</p><details><summary>Web app code</summary><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span><span style=color:#ff79c6>&lt;!DOCTYPE html&gt;</span>
+</span></span><span style=display:flex><span>&lt;<span style=color:#ff79c6>html</span> <span style=color:#50fa7b>lang</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;en&#34;</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>&lt;<span style=color:#ff79c6>head</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#ff79c6>meta</span> <span style=color:#50fa7b>charset</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;UTF-8&#34;</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#ff79c6>meta</span> <span style=color:#50fa7b>http-equiv</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;X-UA-Compatible&#34;</span> <span style=color:#50fa7b>content</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;IE=edge&#34;</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#ff79c6>meta</span> <span style=color:#50fa7b>name</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;viewport&#34;</span> <span style=color:#50fa7b>content</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#ff79c6>title</span>&gt;Firebase Real-time Database Example&lt;/<span style=color:#ff79c6>title</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6272a4>&lt;!-- Add Tailwind CSS stylesheet --&gt;</span>
+</span></span><span style=display:flex><span>    &lt;<span style=color:#ff79c6>link</span> <span style=color:#50fa7b>href</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css&#34;</span> <span style=color:#50fa7b>rel</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;stylesheet&#34;</span>&gt;
+</span></span><span style=display:flex><span>&lt;/<span style=color:#ff79c6>head</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>&lt;<span style=color:#ff79c6>body</span> <span style=color:#50fa7b>class</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;h-screen bg-gray-100&#34;</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#ff79c6>div</span> <span style=color:#50fa7b>class</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;h-full flex items-center justify-center flex-col space-y-4&#34;</span>&gt;
+</span></span><span style=display:flex><span>        &lt;<span style=color:#ff79c6>div</span> <span style=color:#50fa7b>class</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;flex space-x-8&#34;</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#6272a4>&lt;!-- Player 1 container --&gt;</span>
+</span></span><span style=display:flex><span>            &lt;<span style=color:#ff79c6>div</span> <span style=color:#50fa7b>class</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;space-y-4&#34;</span>&gt;
+</span></span><span style=display:flex><span>                &lt;<span style=color:#ff79c6>input</span> <span style=color:#50fa7b>id</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;player1Name&#34;</span> <span style=color:#50fa7b>class</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;px-2 py-1 border border-gray-400 rounded&#34;</span> <span style=color:#50fa7b>type</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;text&#34;</span> <span style=color:#50fa7b>placeholder</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;Player 1&#34;</span>&gt;
+</span></span><span style=display:flex><span>                &lt;<span style=color:#ff79c6>div</span> <span style=color:#50fa7b>id</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;player1Label&#34;</span> <span style=color:#50fa7b>class</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;text-center text-xl font-bold text-gray-600&#34;</span>&gt;Player 1 Score:&lt;/<span style=color:#ff79c6>div</span>&gt;
+</span></span><span style=display:flex><span>                &lt;<span style=color:#ff79c6>div</span> <span style=color:#50fa7b>id</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;player1Score&#34;</span> <span style=color:#50fa7b>class</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;p-4 bg-white rounded shadow text-lg font-bold text-gray-800&#34;</span>&gt;
+</span></span><span style=display:flex><span>                    0
+</span></span><span style=display:flex><span>                &lt;/<span style=color:#ff79c6>div</span>&gt;
+</span></span><span style=display:flex><span>            &lt;/<span style=color:#ff79c6>div</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#6272a4>&lt;!-- Player 2 container --&gt;</span>
+</span></span><span style=display:flex><span>            &lt;<span style=color:#ff79c6>div</span> <span style=color:#50fa7b>class</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;space-y-4&#34;</span>&gt;
+</span></span><span style=display:flex><span>                &lt;<span style=color:#ff79c6>input</span> <span style=color:#50fa7b>id</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;player2Name&#34;</span> <span style=color:#50fa7b>class</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;px-2 py-1 border border-gray-400 rounded&#34;</span> <span style=color:#50fa7b>type</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;text&#34;</span> <span style=color:#50fa7b>placeholder</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;Player 2&#34;</span>&gt;
+</span></span><span style=display:flex><span>                &lt;<span style=color:#ff79c6>div</span> <span style=color:#50fa7b>id</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;player2Label&#34;</span> <span style=color:#50fa7b>class</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;text-center text-xl font-bold text-gray-600&#34;</span>&gt;Player 2 Score:&lt;/<span style=color:#ff79c6>div</span>&gt;
+</span></span><span style=display:flex><span>                &lt;<span style=color:#ff79c6>div</span> <span style=color:#50fa7b>id</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;player2Score&#34;</span> <span style=color:#50fa7b>class</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;p-4 bg-white rounded shadow text-lg font-bold text-gray-800&#34;</span>&gt;
+</span></span><span style=display:flex><span>                    0
+</span></span><span style=display:flex><span>                &lt;/<span style=color:#ff79c6>div</span>&gt;
+</span></span><span style=display:flex><span>            &lt;/<span style=color:#ff79c6>div</span>&gt;
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>        &lt;/<span style=color:#ff79c6>div</span>&gt;
+</span></span><span style=display:flex><span>        &lt;<span style=color:#ff79c6>div</span> <span style=color:#50fa7b>class</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;flex justify-center w-full&#34;</span>&gt;
+</span></span><span style=display:flex><span>            &lt;<span style=color:#ff79c6>button</span> <span style=color:#50fa7b>id</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;resetButton&#34;</span> <span style=color:#50fa7b>class</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;mt-6 px-4 py-2 bg-blue-500 text-white font-semibold rounded&#34;</span>&gt;Reset&lt;/<span style=color:#ff79c6>button</span>&gt;
+</span></span><span style=display:flex><span>        &lt;/<span style=color:#ff79c6>div</span>&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#ff79c6>div</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    &lt;<span style=color:#ff79c6>script</span>&gt;
+</span></span><span style=display:flex><span>        <span style=color:#8be9fd;font-style:italic>document</span>.getElementById(<span style=color:#f1fa8c>&#39;player1Name&#39;</span>).addEventListener(<span style=color:#f1fa8c>&#39;input&#39;</span>, (event) =&gt; {
+</span></span><span style=display:flex><span>            <span style=color:#ff79c6>const</span> playerName <span style=color:#ff79c6>=</span> event.target.value <span style=color:#ff79c6>||</span> <span style=color:#f1fa8c>&#39;Player 1&#39;</span>;
+</span></span><span style=display:flex><span>            <span style=color:#8be9fd;font-style:italic>document</span>.getElementById(<span style=color:#f1fa8c>&#39;player1Label&#39;</span>).innerHTML <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>`</span><span style=color:#f1fa8c>${</span>playerName<span style=color:#f1fa8c>}</span><span style=color:#f1fa8c> Score:`</span>;
+</span></span><span style=display:flex><span>        });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#8be9fd;font-style:italic>document</span>.getElementById(<span style=color:#f1fa8c>&#39;player2Name&#39;</span>).addEventListener(<span style=color:#f1fa8c>&#39;input&#39;</span>, (event) =&gt; {
+</span></span><span style=display:flex><span>            <span style=color:#ff79c6>const</span> playerName <span style=color:#ff79c6>=</span> event.target.value <span style=color:#ff79c6>||</span> <span style=color:#f1fa8c>&#39;Player 2&#39;</span>;
+</span></span><span style=display:flex><span>            <span style=color:#8be9fd;font-style:italic>document</span>.getElementById(<span style=color:#f1fa8c>&#39;player2Label&#39;</span>).innerHTML <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>`</span><span style=color:#f1fa8c>${</span>playerName<span style=color:#f1fa8c>}</span><span style=color:#f1fa8c> Score:`</span>;
+</span></span><span style=display:flex><span>        });
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#ff79c6>script</span>&gt;
+</span></span><span style=display:flex><span>    <span style=color:#6272a4>&lt;!-- Add Firebase SDK --&gt;</span>
+</span></span><span style=display:flex><span>    &lt;<span style=color:#ff79c6>script</span> <span style=color:#50fa7b>src</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js&#34;</span>&gt;&lt;/<span style=color:#ff79c6>script</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#ff79c6>script</span> <span style=color:#50fa7b>src</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34;https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js&#34;</span>&gt;&lt;/<span style=color:#ff79c6>script</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6272a4>&lt;!-- Include your custom JavaScript --&gt;</span>
+</span></span><span style=display:flex><span>    &lt;<span style=color:#ff79c6>script</span>&gt;
+</span></span><span style=display:flex><span>        {{<span style=color:#6272a4>/*  import { initializeApp } from &#34;https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js&#34;;  */</span>}}
+</span></span><span style=display:flex><span>        <span style=color:#6272a4>// TODO: Add SDKs for Firebase products that you want to use
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>        <span style=color:#6272a4>// https://firebase.google.com/docs/web/setup#available-libraries
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>
+</span></span><span style=display:flex><span>        <span style=color:#6272a4>// Your web app&#39;s Firebase configuration
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>        <span style=color:#ff79c6>const</span> firebaseConfig <span style=color:#ff79c6>=</span> {
+</span></span><span style=display:flex><span>            apiKey<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#34;AIzaSyBYL8_Gd4GS-40AcqkTFud8awn-mhHOFHM&#34;</span>,
+</span></span><span style=display:flex><span>            authDomain<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#34;ps70-lasertag.firebaseapp.com&#34;</span>,
+</span></span><span style=display:flex><span>            databaseURL<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#34;https://ps70-lasertag-default-rtdb.firebaseio.com&#34;</span>,
+</span></span><span style=display:flex><span>            projectId<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#34;ps70-lasertag&#34;</span>,
+</span></span><span style=display:flex><span>            storageBucket<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#34;ps70-lasertag.appspot.com&#34;</span>,
+</span></span><span style=display:flex><span>            messagingSenderId<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#34;966598957714&#34;</span>,
+</span></span><span style=display:flex><span>            appId<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#34;1:966598957714:web:2568a00f512c3ed6b3e44b&#34;</span>
+</span></span><span style=display:flex><span>        };
+</span></span><span style=display:flex><span>        <span style=color:#6272a4>// Initialize Firebase
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>        firebase.initializeApp(firebaseConfig);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#6272a4>// Create references to the realtime database
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>        <span style=color:#ff79c6>const</span> player1Ref <span style=color:#ff79c6>=</span> firebase.database().ref(<span style=color:#f1fa8c>&#39;/player1/score&#39;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#ff79c6>const</span> player2Ref <span style=color:#ff79c6>=</span> firebase.database().ref(<span style=color:#f1fa8c>&#39;/player2/score&#39;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#6272a4>// Fetch scores from the realtime database and display them
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>        <span style=color:#8be9fd;font-style:italic>function</span> updateScore(playerRef, elementId) {
+</span></span><span style=display:flex><span>            playerRef.on(<span style=color:#f1fa8c>&#39;value&#39;</span>, (snapshot) =&gt; {
+</span></span><span style=display:flex><span>                <span style=color:#ff79c6>const</span> score <span style=color:#ff79c6>=</span> snapshot.val();
+</span></span><span style=display:flex><span>                <span style=color:#8be9fd;font-style:italic>document</span>.getElementById(elementId).innerHTML <span style=color:#ff79c6>=</span> score;
+</span></span><span style=display:flex><span>            });
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#6272a4>// Update scores on the page as their data change
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>        updateScore(player1Ref, <span style=color:#f1fa8c>&#39;player1Score&#39;</span>);
+</span></span><span style=display:flex><span>        updateScore(player2Ref, <span style=color:#f1fa8c>&#39;player2Score&#39;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#8be9fd;font-style:italic>function</span> resetScores() {
+</span></span><span style=display:flex><span>                player1Ref.set(<span style=color:#bd93f9>0</span>);
+</span></span><span style=display:flex><span>                player2Ref.set(<span style=color:#bd93f9>0</span>);
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#8be9fd;font-style:italic>document</span>.getElementById(<span style=color:#f1fa8c>&#39;resetButton&#39;</span>).addEventListener(<span style=color:#f1fa8c>&#39;click&#39;</span>, resetScores);
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#ff79c6>script</span>&gt;
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>&lt;/<span style=color:#ff79c6>body</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>&lt;/<span style=color:#ff79c6>html</span>&gt;
+</span></span></code></pre></div></details><details><summary>Arduino code</summary><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#ff79c6>#include</span> <span style=color:#ff79c6>&lt;Arduino.h&gt;</span><span style=color:#ff79c6>
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6>#if defined(ESP32)
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6></span>  <span style=color:#ff79c6>#include</span> <span style=color:#ff79c6>&lt;WiFi.h&gt;</span><span style=color:#ff79c6>
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6>#elif defined(ESP8266)
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6></span>  <span style=color:#ff79c6>#include</span> <span style=color:#ff79c6>&lt;ESP8266WiFi.h&gt;</span><span style=color:#ff79c6>
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6>#endif
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6>#include</span> <span style=color:#ff79c6>&lt;Firebase_ESP_Client.h&gt;</span><span style=color:#ff79c6>
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6></span>
+</span></span><span style=display:flex><span><span style=color:#6272a4>//Provide the token generation process info.
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#ff79c6>#include</span> <span style=color:#ff79c6>&#34;addons/TokenHelper.h&#34;</span><span style=color:#ff79c6>
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6></span><span style=color:#6272a4>//Provide the RTDB payload printing info and other helper functions.
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#ff79c6>#include</span> <span style=color:#ff79c6>&#34;addons/RTDBHelper.h&#34;</span><span style=color:#ff79c6>
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6></span>
+</span></span><span style=display:flex><span><span style=color:#6272a4>// Insert your network credentials
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#ff79c6>#define WIFI_SSID &#34;MAKERSPACE&#34;
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6>#define WIFI_PASSWORD &#34;12345678&#34;
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6></span>
+</span></span><span style=display:flex><span><span style=color:#6272a4>// Insert Firebase project API Key
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#ff79c6>#define API_KEY &#34;AIzaSyBYL8_Gd4GS-40AcqkTFud8awn-mhHOFHM&#34;
+</span></span></span><span style=display:flex><span><span style=color:#ff79c6></span>
+</span></span><span style=display:flex><span><span style=color:#6272a4>// Insert RTDB URLefine the RTDB URL */
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#ff79c6>#define DATABASE_URL &#34;https:</span><span style=color:#6272a4>//ps70-lasertag-default-rtdb.firebaseio.com&#34; 
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>
+</span></span><span style=display:flex><span><span style=color:#6272a4>//Define Firebase Data object
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>FirebaseData fbdo;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>FirebaseAuth auth;
+</span></span><span style=display:flex><span>FirebaseConfig config;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#8be9fd>unsigned</span> <span style=color:#8be9fd>long</span> sendDataPrevMillis <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>;
+</span></span><span style=display:flex><span><span style=color:#8be9fd>int</span> count <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>;
+</span></span><span style=display:flex><span><span style=color:#8be9fd>bool</span> signupOK <span style=color:#ff79c6>=</span> <span style=color:#8be9fd;font-style:italic>false</span>;
+</span></span><span style=display:flex><span><span style=color:#8be9fd>int</span> SENSOR_PIN <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>15</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>class</span> <span style=color:#50fa7b>AnalogSensor</span> {
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>private</span><span style=color:#ff79c6>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#8be9fd>int</span> _pin; <span style=color:#6272a4>// Pin for the analog sensor
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    <span style=color:#8be9fd>int</span> _minValue; <span style=color:#6272a4>// Minimum possible value from the sensor
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    <span style=color:#8be9fd>int</span> _maxValue; <span style=color:#6272a4>// Maximum possible value from the sensor
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>public</span><span style=color:#ff79c6>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#6272a4>// Constructor
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    AnalogSensor(<span style=color:#8be9fd>int</span> pin, <span style=color:#8be9fd>int</span> minValue <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>, <span style=color:#8be9fd>int</span> maxValue <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>4096</span>) {
+</span></span><span style=display:flex><span>      _pin <span style=color:#ff79c6>=</span> pin;
+</span></span><span style=display:flex><span>      _minValue <span style=color:#ff79c6>=</span> minValue;
+</span></span><span style=display:flex><span>      _maxValue <span style=color:#ff79c6>=</span> maxValue;
+</span></span><span style=display:flex><span>      pinMode(_pin, INPUT);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6272a4>// Read raw value from the sensor
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    <span style=color:#8be9fd>int</span> <span style=color:#50fa7b>readRawValue</span>() {
+</span></span><span style=display:flex><span>      <span style=color:#ff79c6>return</span> analogRead(_pin);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6272a4>// Read normalized value from the sensor (0 to 100)
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    <span style=color:#8be9fd>int</span> <span style=color:#50fa7b>readNormalizedValue</span>() {
+</span></span><span style=display:flex><span>      <span style=color:#8be9fd>int</span> rawValue <span style=color:#ff79c6>=</span> readRawValue();
+</span></span><span style=display:flex><span>      <span style=color:#8be9fd>int</span> normalizedValue <span style=color:#ff79c6>=</span> map(rawValue, _minValue, _maxValue, <span style=color:#bd93f9>0</span>, <span style=color:#bd93f9>100</span>);
+</span></span><span style=display:flex><span>      <span style=color:#ff79c6>return</span> normalizedValue;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#8be9fd>void</span> <span style=color:#50fa7b>setup</span>(){
+</span></span><span style=display:flex><span>  Serial.begin(<span style=color:#bd93f9>115200</span>);
+</span></span><span style=display:flex><span>  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+</span></span><span style=display:flex><span>  Serial.print(<span style=color:#f1fa8c>&#34;Connecting to Wi-Fi&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>while</span> (WiFi.status() <span style=color:#ff79c6>!=</span> WL_CONNECTED){
+</span></span><span style=display:flex><span>    Serial.print(<span style=color:#f1fa8c>&#34;.&#34;</span>);
+</span></span><span style=display:flex><span>    delay(<span style=color:#bd93f9>300</span>);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  Serial.println();
+</span></span><span style=display:flex><span>  Serial.print(<span style=color:#f1fa8c>&#34;Connected with IP: &#34;</span>);
+</span></span><span style=display:flex><span>  Serial.println(WiFi.localIP());
+</span></span><span style=display:flex><span>  Serial.println();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>/* Assign the api key (required) */</span>
+</span></span><span style=display:flex><span>  config.api_key <span style=color:#ff79c6>=</span> API_KEY;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>/* Assign the RTDB URL (required) */</span>
+</span></span><span style=display:flex><span>  config.database_url <span style=color:#ff79c6>=</span> DATABASE_URL;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>/* Sign up */</span>
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>if</span> (Firebase.signUp(<span style=color:#ff79c6>&amp;</span>config, <span style=color:#ff79c6>&amp;</span>auth, <span style=color:#f1fa8c>&#34;&#34;</span>, <span style=color:#f1fa8c>&#34;&#34;</span>)){
+</span></span><span style=display:flex><span>    Serial.println(<span style=color:#f1fa8c>&#34;ok&#34;</span>);
+</span></span><span style=display:flex><span>    signupOK <span style=color:#ff79c6>=</span> <span style=color:#8be9fd;font-style:italic>true</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>else</span>{
+</span></span><span style=display:flex><span>    Serial.printf(<span style=color:#f1fa8c>&#34;%s</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, config.signer.signupError.message.c_str());
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#6272a4>/* Assign the callback function for the long running token generation task */</span>
+</span></span><span style=display:flex><span>  config.token_status_callback <span style=color:#ff79c6>=</span> tokenStatusCallback; <span style=color:#6272a4>//see addons/TokenHelper.h
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>  
+</span></span><span style=display:flex><span>  Firebase.begin(<span style=color:#ff79c6>&amp;</span>config, <span style=color:#ff79c6>&amp;</span>auth);
+</span></span><span style=display:flex><span>  Firebase.reconnectWiFi(<span style=color:#8be9fd;font-style:italic>true</span>);
+</span></span><span style=display:flex><span>  pinMode(<span style=color:#bd93f9>42</span>, OUTPUT);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#8be9fd>int</span> score;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#8be9fd>void</span> <span style=color:#50fa7b>loop</span>(){
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>if</span> (Firebase.ready() <span style=color:#ff79c6>&amp;&amp;</span> signupOK <span style=color:#ff79c6>&amp;&amp;</span> (millis() <span style=color:#ff79c6>-</span> sendDataPrevMillis <span style=color:#ff79c6>&gt;</span> <span style=color:#bd93f9>15</span> <span style=color:#ff79c6>||</span> sendDataPrevMillis <span style=color:#ff79c6>==</span> <span style=color:#bd93f9>0</span>)){
+</span></span><span style=display:flex><span>    sendDataPrevMillis <span style=color:#ff79c6>=</span> millis();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  AnalogSensor photoresistor(SENSOR_PIN);
+</span></span><span style=display:flex><span>  <span style=color:#8be9fd>int</span> normalizedValue <span style=color:#ff79c6>=</span> photoresistor.readNormalizedValue();
+</span></span><span style=display:flex><span>  Serial.println(normalizedValue);
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>if</span>(normalizedValue <span style=color:#ff79c6>&lt;</span> <span style=color:#bd93f9>60</span>){
+</span></span><span style=display:flex><span>    Firebase.RTDB.getFloat(<span style=color:#ff79c6>&amp;</span>fbdo, <span style=color:#f1fa8c>&#34;/player1/score&#34;</span>);
+</span></span><span style=display:flex><span>    score <span style=color:#ff79c6>=</span> fbdo.floatData();
+</span></span><span style=display:flex><span>    Firebase.RTDB.setInt(<span style=color:#ff79c6>&amp;</span>fbdo, <span style=color:#f1fa8c>&#34;player1/score&#34;</span>, score <span style=color:#ff79c6>+</span> <span style=color:#bd93f9>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></details></article></div><hr class="relative h-px my-8 bg-gray-200 border-0 dark:bg-gray-700 max-w-4xl mx-auto"><div class="giscus w-full mx-auto pt-4 max-w-4xl"><script>function changeGiscusTheme(){const e=document.documentElement.getAttribute("class")==="dark"?"light":"dark";function t(e){const t=document.querySelector("iframe.giscus-frame");if(!t)return;t.contentWindow.postMessage({giscus:e},"https://giscus.app")}t({setConfig:{theme:e}})}const modeToggle=document.querySelector(".toggle-dark-mode");modeToggle&&modeToggle.addEventListener("click",changeGiscusTheme)</script><script>let giscusTheme=localStorage.getItem("darkmode"),giscusAttributes={src:"https://giscus.app/client.js","data-repo":"geometrikz/ps70","data-repo-id":"R_kgDOI6narQ","data-category":"Announcements","data-category-id":"DIC_kwDOI6narc4CUEG2","data-mapping":"title","data-strict":"0","data-reactions-enabled":"1","data-emit-metadata":"0","data-input-position":"top","data-theme":giscusTheme,"data-lang":"en",crossorigin:"anonymous",async:""},giscusScript=document.createElement("script");Object.entries(giscusAttributes).forEach(([e,t])=>giscusScript.setAttribute(e,t)),document.body.appendChild(giscusScript)</script></div></main><footer class="container p-6 mx-auto flex justify-between items-center"><span class="text-sm font-light">2023 © PS70: Intro to Digital Fabrication</span>
+<span onclick='window.scrollTo({top:0,behavior:"smooth"})' class="p-1 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 15l-6-6-6 6h12"/></svg></span></footer><div class="search-ui absolute top-0 left-0 w-full h-full bg-white dark:bg-gray-800 hidden"><div class="container max-w-3xl mx-auto p-12"><div class=relative><div class="my-4 text-center text-2xl font-bold">Search</div><span class="p-2 absolute right-0 top-0 cursor-pointer close-search"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></div><input type=search class="py-2 px-3 w-full dark:text-black border dark:border-transparent" placeholder="Enter search query"><div class="search-results text-lg font-medium my-4 hidden">Results</div><ul class="search-list my-2"></ul><div class="no-results text-center my-8 hidden"><div class="text-xl font-semibold mb-2">No results found</div><p class="font-light text-sm">Try adjusting your search query</p></div></div></div><script src=https://geometrikz.github.io/PS70/js/scripts.min.js></script>
+<script>const darkmode=document.querySelector(".toggle-dark-mode");function toggleDarkMode(){document.documentElement.classList.contains("dark")?(document.documentElement.classList.remove("dark"),localStorage.setItem("darkmode","light")):(document.documentElement.classList.add("dark"),localStorage.setItem("darkmode","dark"))}darkmode&&darkmode.addEventListener("click",toggleDarkMode);const darkStorage=localStorage.getItem("darkmode"),isBrowserDark=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;!darkStorage&&isBrowserDark&&document.documentElement.classList.add("dark"),darkStorage&&darkStorage==="dark"&&toggleDarkMode()</script><script>const mobileMenuButton=document.querySelector(".mobile-menu-button"),mobileMenu=document.querySelector(".mobile-menu");function toggleMenu(){mobileMenu.classList.toggle("hidden"),mobileMenu.classList.toggle("flex")}mobileMenu&&mobileMenuButton&&mobileMenuButton.addEventListener("click",toggleMenu)</script></body></html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Real-time Database Example</title>
+
+    <!-- Add Tailwind CSS stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="h-screen bg-gray-100">
+    <div class="h-full flex items-center justify-center flex-col space-y-4">
+        <div class="flex space-x-8">
+
+            <!-- Player 1 container -->
+            <div class="space-y-4">
+                <input id="player1Name" class="px-2 py-1 border border-gray-400 rounded" type="text" placeholder="Player 1">
+                <div id="player1Label" class="text-center text-xl font-bold text-gray-600">Player 1 Score:</div>
+                <div id="player1Score" class="p-4 bg-white rounded shadow text-lg font-bold text-gray-800">
+                    0
+                </div>
+            </div>
+
+            <!-- Player 2 container -->
+            <div class="space-y-4">
+                <input id="player2Name" class="px-2 py-1 border border-gray-400 rounded" type="text" placeholder="Player 2">
+                <div id="player2Label" class="text-center text-xl font-bold text-gray-600">Player 2 Score:</div>
+                <div id="player2Score" class="p-4 bg-white rounded shadow text-lg font-bold text-gray-800">
+                    0
+                </div>
+            </div>
+            
+        </div>
+        <div class="flex justify-center w-full">
+            <button id="resetButton" class="mt-6 px-4 py-2 bg-blue-500 text-white font-semibold rounded">Reset</button>
+        </div>
+    </div>
+
+
+    
+
+    <script>
+        document.getElementById('player1Name').addEventListener('input', (event) => {
+            const playerName = event.target.value || 'Player 1';
+            document.getElementById('player1Label').innerHTML = `${playerName} Score:`;
+        });
+
+        document.getElementById('player2Name').addEventListener('input', (event) => {
+            const playerName = event.target.value || 'Player 2';
+            document.getElementById('player2Label').innerHTML = `${playerName} Score:`;
+        });
+    </script>
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <!-- Include your custom JavaScript -->
+    <script>
+        {{/*  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";  */}}
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBYL8_Gd4GS-40AcqkTFud8awn-mhHOFHM",
+            authDomain: "ps70-lasertag.firebaseapp.com",
+            databaseURL: "https://ps70-lasertag-default-rtdb.firebaseio.com",
+            projectId: "ps70-lasertag",
+            storageBucket: "ps70-lasertag.appspot.com",
+            messagingSenderId: "966598957714",
+            appId: "1:966598957714:web:2568a00f512c3ed6b3e44b"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Create references to the realtime database
+        const player1Ref = firebase.database().ref('/player1/score');
+        const player2Ref = firebase.database().ref('/player2/score');
+
+        // Fetch scores from the realtime database and display them
+        function updateScore(playerRef, elementId) {
+            playerRef.on('value', (snapshot) => {
+                const score = snapshot.val();
+                document.getElementById(elementId).innerHTML = score;
+            });
+        }
+
+        // Update scores on the page as their data change
+        updateScore(player1Ref, 'player1Score');
+        updateScore(player2Ref, 'player2Score');
+
+        function resetScores() {
+                player1Ref.set(0);
+                player2Ref.set(0);
+            }
+
+        document.getElementById('resetButton').addEventListener('click', resetScores);
+        
+    </script>
+    
+</body>
+
+</html>
