@@ -3,7 +3,7 @@ author: "Geoffrey Liu"
 title: "Week 10+ (Final Project) Updates"
 date: 2023-04-03
 description: "D"
-thumbnail: /project/featured.jpg
+thumbnail: /project/featured.png
 ---
 
 My final project is creating a Chat-GPT (or another large LLM) powered Tamagochi. There will be different characters that you can upload to the tamagochi, and you can talk to them using voice, and it will respond back using either actions, text and voice. The idea is that the Tamagochi pet can act as a friend, teacher, pet, or anything you can dream of as long as you can prompt ChatGPT to do something.
@@ -46,7 +46,7 @@ The design chart is below.
 
 Currently nothing is asynchronous and I still need to investigate if this is possible. The MVP system is designed as follows:
 
-1. Mic to MCU SPIFFS Internal Storage as `.wav` file
+1. MCU records 20 seconds of audio data from I2S microphone into SPIFFS Internal Storage as `.wav` file
 2. MCU send '.wav' file to computer via WiFi using HTTP Client.
 3. PC sends '.wav' file to Azure Speech to Text API
 4. Azure Speech to Text API returns recognized text to PC.
@@ -57,5 +57,16 @@ Currently nothing is asynchronous and I still need to investigate if this is pos
 9. PC sends `.mpeg` file to ESP32 via HTTP Client.
 10. MCU displays text and plays audio on OLED and speaker.
 
-![Example Outputs](/project/design_chart.png)
+There are many optimizations that can be made to this system, and I will investigate a few.
 
+1. Investigate the possibility for streaming data via websockets to reduce latency. 
+2. Investigate the possibility of removing the PC and have everything route directly through the MCU.
+3. Implement the speaker (I couldn't get it working)
+
+Here is a photo of the MVP which is just a breadboard unit.
+
+![MVP](/project/mvp_photo.png)
+
+Here is a ideal refined system diagram for my next iteration.
+
+![System Design V2](/project/system_design_v2.jpg)

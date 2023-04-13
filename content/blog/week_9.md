@@ -1,9 +1,9 @@
 ---
 author: "Geoffrey Liu"
 title: "Week 9: Networking"
-date: 2023-04-03
+date: 2023-04-12
 description: "Creating laser tag (not using lasers)"
-thumbnail: /week9/featured.jpg
+thumbnail: /week9/featured.jpeg
 ---
 
 This week we wanted to recreate laser-tag using laser-pointers and photo-receivers. This didn't work too well, so we ended up using infrared (IR) LED's and IR photo-transistors instead.
