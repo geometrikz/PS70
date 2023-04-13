@@ -1,8 +1,8 @@
 ---
 author: "Geoffrey Liu"
 title: "Week 10+ (Final Project) Updates"
-date: 2023-04-03
-description: "D"
+date: 2023-04-12
+description: "Final project updates"
 thumbnail: /project/featured.png
 ---
 

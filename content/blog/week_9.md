@@ -1,7 +1,7 @@
 ---
 author: "Geoffrey Liu"
 title: "Week 9: Networking"
-date: 2023-04-12
+date: 2023-04-03
 description: "Creating laser tag (not using lasers)"
 thumbnail: /week9/featured.jpeg
 ---
