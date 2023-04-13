@@ -69,4 +69,4 @@ Here is a photo of the MVP which is just a breadboard unit.
 
 Here is a ideal refined system diagram for my next iteration.
 
-![System Design V2](/project/system_design_v2.jpg)
+![System Design V2](/project/system_design_v2.png)
