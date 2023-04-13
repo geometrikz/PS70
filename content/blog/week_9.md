@@ -35,6 +35,8 @@ When the sensor reads a voltage that crosses a certain threshold, it reads playe
 
 A simple web-app is coded up, which displays the real-time score from Firebase between two players. Players can choose their names, and the web-app will display the score of each player. There is also a reset button which zero's out the scores of the two players, so they can restart the game.
 
+![Web app](/week9/webapp.png)
+
 A prototype demo is shown in the video below:
 
 ![Prototype demo](/week9/demo_v1.mov)
