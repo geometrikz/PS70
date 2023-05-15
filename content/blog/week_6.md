@@ -20,6 +20,7 @@ We covered various types of capacitive sensors this week, I use charged copper s
 At the start of the week, I thought a great idea would be to get a 3D positioning. The idea is that I could use the acceleration and gyroscope readings from the MPU6050, apply some fancy filters and data-processing to somehow get a more accurate reading, and double-integrate the processed acceleration values to obtain the 3D displacement.
 
 $$ \dot{x}(t) = \int_0^t \ddot{x}(t) dt \implies v(t) = v(0) + at$$
+
 $$ x = \int \dot{x}(t) dt = \int \int \ddot{x} dt  \implies x(t) = x(0) + v(0)t + 0.5at^2$$
 
 ## Calibration
