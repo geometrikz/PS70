@@ -540,7 +540,9 @@ void Gyro :: updateGyro(){
 
 </details>
 
-Next, in programming the driving functionality, we took some measurements and used some basic geometry (that took us way longer than it should have to figure out), and allowed for public functions that would turn the robot a certain number of degrees, move it forward a certain number of millimeters, and allow it to draw a circle with a diameter of one meter. You’ll notice we ended up getting an accurate enough turn angle without the gyroscope that we decided to comment out that functionality. However, data from the gyro can be accessed via the API and used for manual calibration.
+Next, in programming the driving functionality, we took some measurements and used some basic geometry to convert turning radii and forward motion into motor steps (that took us way longer than it should have to figure out), and allowed for public functions that would turn the robot a certain number of degrees, move it forward a certain number of millimeters, and allow it to draw a circle with a diameter of one meter. You’ll notice we ended up getting an accurate enough turn angle without the gyroscope that we decided to comment out that functionality. However, data from the gyro can be accessed via the API and used for manual calibration.
+
+![Maths](/week10/blackboard.png)
 
 <details>
 <summary>Microprocessor: Driving (Click to reveal code)</summary>
