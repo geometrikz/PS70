@@ -11,6 +11,8 @@ thumbnail: /project/IMG_7475.png
 <video src="/project/demo_video.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
+[Backup Video Link](https://youtu.be/-QYdDa2aF3s)
+
 ## Motivation
 
 Growing up, I had many different types of digital pets. The first was a Tamagotchi, then it was a Digimon Digivice (basically a tamagotchi that you could use to battle your friends). These were the main two hand-held devices, before digital pets were brought to a game console, such as the Nintendo DS, where I had a digital dog called Nintendogs, and even the Switch where I had a digital cat in Little Friends: Cats and Dogs.
