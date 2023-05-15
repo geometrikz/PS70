@@ -858,3 +858,13 @@ void loop() {
 </details>
 
 ### End product
+
+The robot ended up working just as well as we had hoped, and we were really happy with it’s performance outdoors! Here are some pictures and videos of the action!
+
+**Drawing a star**
+
+<iframe width="843" height="474" src="https://www.youtube.com/embed/XGXfDdbjJo8" title="star demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+**Drawing a circle**
+
+<iframe width="843" height="474" src="https://www.youtube.com/embed/9HmAaRooH9c" title="circle demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
