@@ -52,7 +52,7 @@ For user input, we wanted people to be able to draw whatever they wanted, so we 
 
 
 <details>
-<summary>Web app code</summary>
+<summary>Web app code (Click to reveal code)</summary>
 
 ```javascript
 export default function Canvas(props) {
@@ -96,7 +96,7 @@ export default function Canvas(props) {
 We then embedded this within a site built on React. Using event handlers and the Javascript Fetch API, the site records a list of coordinates where the user has clicked and sends them to the API when the appropriate button is clicked:
 
 <details>
-<summary>Web API Code</summary>
+<summary>Web API Code (Click to reveal code)</summary>
 
 ```javascript
 function App() {
@@ -172,7 +172,7 @@ Feel free to check out what the final site looks like here!
 That would send a set of coordinates to an API, which we then had to convert into instructions for the robot in the form “turn x degrees, then move y centimeters.” We did this through some fun geometry and two classes:
 
 <details>
-<summary>Co-ordinate processing</summary>
+<summary>Co-ordinate processing (Click to reveal code)</summary>
 
 ```javascript
 class Point {
@@ -370,7 +370,7 @@ If you are interested, the final API can be accessed [here](https://ps70-api.ver
 For this part, we split the code into two classes: one that reads data from the gyroscope and one that controls the two stepper motors. The MPU6050 library we used has not been updated in a long time, and we ended up having to modify some of the source files in order to make it its own class, but we eventually got it working:
 
 <details>
-<summary>Microprocessor</summary>
+<summary>Microprocessor (Click to reveal code)</summary>
 
 **Gyro.h:**
 
@@ -539,7 +539,7 @@ void Gyro :: updateGyro(){
 Next, in programming the driving functionality, we took some measurements and used some basic geometry (that took us way longer than it should have to figure out), and allowed for public functions that would turn the robot a certain number of degrees, move it forward a certain number of millimeters, and allow it to draw a circle with a diameter of one meter. You’ll notice we ended up getting an accurate enough turn angle without the gyroscope that we decided to comment out that functionality.
 
 <details>
-<summary>Microprocessor: Driving</summary>
+<summary>Microprocessor: Driving (Click to reveal code)</summary>
 
 *Driving.h*
 
@@ -692,7 +692,7 @@ void Driving :: sendGyro(){
 Finally, we put these parts together in a main file that controlled the pump, and read commands from our server and executed them one by one:
 
 <details>
-<summary>Microprocessor: Arduino</summary>
+<summary>Microprocessor: Arduino (Click to reveal code)</summary>
 
 *drawing_robot.ino*
 
@@ -829,7 +829,7 @@ Thus, our end effector was a mini pump that drew from a water container on the c
 Below is the relay code, which got integrated into the full code later on.
 
 <details>
-<summary>End Effector</summary>
+<summary>End Effector (Click to reveal code)</summary>
 
 ```cpp
 //changed from 26
