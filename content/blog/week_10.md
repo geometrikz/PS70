@@ -21,6 +21,7 @@ This week we worked in a group project to build a "sidewalk plotter" with the fo
   * 2 3D printed stepper motor housing attachment
   * 1 caster wheel
   * M3 hex screws
+  * 1/4" square dowel (1 feet total)
 * Electronics
   * 2 Stepper Motors
   * 1 MPU6050 IMU
@@ -39,6 +40,7 @@ Since one of the criterion was to draw a 1 meter diameter circle, we did not wan
 
 The below was laser cut into the wood. The four corner holes were used for aligning the posts that separated the two layers, the side holes for the motor cords, and the middle for the bottle and its tube to enable our liquid for the “drawing” requirement.
 
+![Robot Plates](/week10/robot_plates.png)
 
 ### Software and Electronics
 
