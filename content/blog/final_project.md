@@ -8,6 +8,9 @@ thumbnail: /project/IMG_7475.png
 
 *What if we could create a digital pet that you could talk to, and adapts to your personality?*
 
+<video src="/static/project/demo_video.mp4" controls="controls" style="max-width: 730px;">
+</video>
+
 ## Motivation
 
 Growing up, I had many different types of digital pets. The first was a Tamagotchi, then it was a Digimon Digivice (basically a tamagotchi that you could use to battle your friends). These were the main two hand-held devices, before digital pets were brought to a game console, such as the Nintendo DS, where I had a digital dog called Nintendogs, and even the Switch where I had a digital cat in Little Friends: Cats and Dogs.
@@ -137,13 +140,15 @@ The final product design as well as a cross-section is shown below. Everything f
 
 The frontface and backface were 3D printed using clear PLA, while the backplate was 3D printed using "Silk Gold" PLA. This was assembled and soldered manually by hand using 26 gauge copper wire. The prototype with unfinished cable management is shown below.
 
-![Final product 1](/project/IMG_7475.png)
+![Final product Wires](/project/IMG_7475.png)
 
 The final product after soldering and cable management is shown below and compared to an AirPods Pro case for size reference.
 
-![Final product 1](/project/IMG_7488.png)
+![Final product 1](/project/IMG_7478.png)
 
-![Final product 1](/project/IMG_7487.png)
+![Final product 2](/project/IMG_7488.png)
+
+![Final product 3](/project/IMG_7487.png)
 
 ## Electronic circuit
 
@@ -867,6 +872,11 @@ In the next version of the design, here are a few changes I would make
 3. Use surface-mount devices instead of stock components.
 4. Add a BMP280 so the AI can see altitude and temperature information. One of the most asked questions was "what is the weather like today", which it currently cannot answer accurately.
 5. Bluetooth to piggy back off phone connectivity (?)
+
+## CAD Files
+
+[Download my Fusion360 CAD file here](/project/tamagotchi_v8.f3d)
+[Download the final STL file here](/project/tamagotchi_v8.stl)
 
 <!-- The ESP32 has two 8-bit Digital to Analog (DAC) converters for stereo sound which can be accessed via GPIO 25/26. However, using the speaker directly with the internal DAC results in very low quality audio. There are two reasons for this.
 
