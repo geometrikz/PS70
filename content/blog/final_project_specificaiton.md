@@ -65,7 +65,7 @@ There are many optimizations that can be made to this system, and I will investi
 
 Here is a photo of the MVP which is just a breadboard unit.
 
-![MVP](/project/mvp_photo.png)
+![MVP](/project/IMG_7344.png)
 
 Here is a ideal refined system diagram for my next iteration.
 

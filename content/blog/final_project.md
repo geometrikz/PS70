@@ -156,7 +156,15 @@ The electronic circuit design was relatively simple since each component can be 
 | Speaker  | BCK: 15, WS: 14, Data: 32 |
 | Buttons | R: 25, L: 4, U: 26, D:21|
 
-## Microcontroller coding
+# Software
+
+Here is a schematic of the software architecture of the project.
+
+![System Design V2](/project/system_design_v2.png)
+
+# Microcontroller coding
+
+
 
 The code for the microcontroller consists of three main parts.
 1. The GUI, which is implemented through conditional statements and a drawMenu() function that draws the menu based on the currentMenu and currentOption variables. The GUI is drawn using functions from the TFT_eSPI library.
