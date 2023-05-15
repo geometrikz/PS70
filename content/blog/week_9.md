@@ -23,6 +23,8 @@ For the laser shooter, we build a simple circuit using a button and a 555 circui
 
 The button is used to trigger the 555 circuit, which then turns on the IR LED for a short period of time. This is connected to a battery pack, so the shooter is completely wireless.
 
+![555 circuit](/week9/circuit.png)
+
 ## Sensors
 
 The sensor is the only part of the system that needs a micro-controller. It uses a photo-transistor, wired up in a voltage divider circuit and the output is connected to an analog pin on the micro-controller. The micro-controller then reads the voltage and determines if the laser has hit the target.
