@@ -71,6 +71,10 @@ Here's a picture of all the moulds that I made, as well as a metal cast of Mount
 
 ![Moulds](/week8/molds.jpg)
 
+I melted some chocolate using the oven in the lab, and poured it into my everest chocolate mold. Here's how it turned out.
+
+![Chocolate](/week8/IMG_7250.png)
+
 ## Wood Milling
 
 For wood milling, I wanted to create a simple 'Welcome' sign for my front door. I designed this in Illustrator but making a rounded rectangle, and font-outline. The final CNC is shown below. Some of the smaller details such as the 'e' broke off due to the wood quality.

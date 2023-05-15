@@ -8,7 +8,7 @@ thumbnail: /images/w7_spw2430.jpeg
 
 **This week I was humbled by simple electronics.**
 
-I decided to play around with speakers and microphones this week. This article will be a diary of how I was humbled by simple electronics...
+Since I already used the OLED in week 4, this week I decided to play around with microphones this week (although technically an input device, I got permission to use the microphone on output device week). This article will be a diary of how I was humbled by simple electronics...
 
 ## Idea 1: Audio recording and playback
 
@@ -25,6 +25,12 @@ To figure out why it wasn't working, I turned to the oscilloscope and read the t
 
 The Adafruit website said if you needed a higher peak-to-peak, "a rail-to-rail op-amp and some resistors can get you boosted up!" but I wasn't able to find a clear tutorial on how to hook up a rail-to-rail op-amp to the ESP32 ADC. I decided to try the other two microphones.
 
+**Update! Mid April**
+
+I managed to create an op-amp circuit for the SPW2430 to amplify the signal. Here's an oscilloscope reading of the amplified output and the PNG. The amplified readings are clipped (the top is cut off) since the op-amp is not rail-to-rail, but the peak-to-peak voltage is now ~0.5V which is enough to be picked up by the ESP32 ADC. 
+
+![amplified_oscilliscope](/images/opamp_osc.jpg)
+![oscilliscope_circuit](/images/opamp_circuit.png)
 #### SPH0645 I2S Mic
 
 There were some tutorial on how to hook-up this microphone, however after spending an hour and abit, I could not get this to read anything apart from 0 with two different chips. I gave up on this one and moved onto the next one.
@@ -192,3 +198,11 @@ A summary of the system:
 * Web-server sends a compressed file to Google's Speech-to-Text API to convert audio to text
 * Web-server sends converted text back to arduino.
 
+
+## Revopoint makeup
+
+I used the revopoint scanner to scan a little 3D figurine that I borrowed from Ashley. It took 3-4 scans to get a nice output. I've attached a picture of the revopoint software, a picture of the final STL file and also the STL file itself.
+
+![Revopoint software](/images/revopoint.png)
+![Prusa Revo](/images/prusa_revo.png)
+[Link to the STL file](/files/dino_mesh_rgb.stl)
