@@ -39,6 +39,14 @@ A simple web-app is coded up, which displays the real-time score from Firebase b
 
 ![Web app](/week9/webapp.png)
 
+## Physical design
+
+For the physical gun, we decided to use PVC tubes, with the infrared LED placed inside the tube. This helped to narrow the IR beam and made it more 'gun-like' rather than 'remote-like'. A picture of the prototype gun is shown below.
+
+![Prototype gun](/week9/IMG_7514.png)
+
+## Demo
+
 A prototype demo is shown in the video below:
 
 ![Prototype demo](/week9/demo_v1.mov)
