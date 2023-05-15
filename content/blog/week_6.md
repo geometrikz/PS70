@@ -21,8 +21,9 @@ At the start of the week, I thought a great idea would be to get a 3D positionin
 
 $$\dot{x}(t) = \int_0^t \ddot{x}(t) dt \implies v(t) = v(0) + at$$
 
-$x = \int \dot{x}(t) dt = \int \int \ddot{x} dt  \implies x(t) = x(0) + v(0)t + 0.5at^2$
+$$x = \int \dot{x}(t) dt = \int \int \ddot{x} dt  \implies x(t) = x(0) + v(0)t + 0.5at^2$$
 
+![avs_equations](/images/avs_equations.png)
 ## Calibration
 
 To calibrate the sensor, we first need to know how the gyro and accelerometer work. The accelerometer reads the force on a small mass relative to its own rest frame, so a stationary accelerometer should read 1G (9.81m/s) in the z-direction and 0G in the x and y directions. In free-fall, it would read 0G's in all directions. The gyro reads the angular velocity of the sensor, so a stationary gyro should read 0 in all directions. The accelerometer provides an absolute measurement (not relative to an initial value) while the gyroscope is a relative measurement (measurement is relative to an initial value).

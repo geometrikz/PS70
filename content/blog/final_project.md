@@ -8,7 +8,7 @@ thumbnail: /project/IMG_7475.png
 
 *What if we could create a digital pet that you could talk to, and adapts to your personality?*
 
-<video src="/project/demo_video.mp4" controls="controls" style="max-width: 730px;">
+<video src="/project/demo_video.mp4" controls="controls" style="max-width: 1080px;">
 </video>
 
 [Backup Video Link](https://youtu.be/-QYdDa2aF3s)

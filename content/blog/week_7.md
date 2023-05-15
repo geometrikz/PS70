@@ -33,7 +33,7 @@ I managed to create an op-amp circuit for the SPW2430 to amplify the signal. Her
 ![oscilliscope_circuit](/images/opamp_circuit.png)
 
 The left is unamplified and the right is amplified
-![osc_prepost](/images/osc_prepost.png)
+![osc_prepost](/images/osc_prepost.jpg)
 #### SPH0645 I2S Mic
 
 There were some tutorial on how to hook-up this microphone, however after spending an hour and abit, I could not get this to read anything apart from 0 with two different chips. I gave up on this one and moved onto the next one.
