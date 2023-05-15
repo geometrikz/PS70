@@ -15,15 +15,17 @@ thumbnail: /project/IMG_7475.png
 
 ## Motivation
 
-Growing up, I had many different types of digital pets. The first was a Tamagotchi, then it was a Digimon Digivice (basically a tamagotchi that you could use to battle your friends). These were the main two hand-held devices, before digital pets were brought to a game console, such as the Nintendo DS, where I had a digital dog called Nintendogs, and even the Switch where I had a digital cat in Little Friends: Cats and Dogs.
+In this course, what I found most interesting was 3D design, microcontroller programming, networking and electronic input/output devices. I also wanted to build something intricately designed and small.
 
-However, there were two things lacking in all these versions. 
+Growing up, I had many different types of digital pets. The first was a [Tamagotchi](https://en.wikipedia.org/wiki/Tamagotchi), then it was a [Digimon Digivice](https://en.wikipedia.org/wiki/Digital_Monster) (basically a tamagotchi that you could use to battle your friends). These were the main two hand-held devices, before digital pets were brought to a game console, such as the Nintendo DS, where I had a digital dog called [Nintendogs](https://en.wikipedia.org/wiki/Nintendogs), and even the Switch where I had a digital cat in [Little Friends: Cats and Dogs](https://en.wikipedia.org/wiki/Little_Friends:_Dogs_&_Cats).
+
+However, there were three things lacking in all these variations of digital pets. 
 
 * Handheld tamagochi's are "too dumb"
 * Digital pets on consoles are too inconvenient
 * Digital pets on mobile phones are too distracting
 
-In this course, what I found most interesting was 3D design, microcontroller programming, networking and electronic input/output devices. I also wanted to build something intricately designed and small.
+We should be able to interact with our digital pet through voice, using ChatGPT, Speech Recognition, and Speech Synthesis. In this final project, I will be documenting the process of building my AI-powered tamagotchi that you can interact with vocally.
 
 <!-- First, the handheld tamagotchi's were "dumb". They did not have any online features, and they also didn't have many functions. You basically fed your pet and played with it, using 2-3 buttons to make sure it didn't die but it really didn't feel like a pet.  -->
 <!-- 
@@ -136,7 +138,9 @@ The final product design as well as a cross-section is shown below. Everything f
 
 ![Final product](/project/final_product.png)
 
-![Final product](/project/final_product_cross_section.png)
+![Final product cross](/project/final_product_cross_section.png)
+
+![Final product split](/project/final_design_split.png)
 
 ## Final Product
 
