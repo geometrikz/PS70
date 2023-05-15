@@ -5,7 +5,7 @@ date: 2022-02-06
 description:
 keywords: ["about-us", "about-hugo", "contact"]
 type: about
-thumbnail: /images/me1.jpg
+thumbnail: /images/me1.png
 ---
 
 Hi, I'm Geoff. I'm a graduate student from Australia studying Computer Science at Harvard SEAS, I'm interested in machine learning, startups and quite recently systems design and engineering. I enjoy nature photography, hiking, cooking and over-engineered products.

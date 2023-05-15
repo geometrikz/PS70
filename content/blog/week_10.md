@@ -16,7 +16,7 @@ This week we worked in a group project to build a "sidewalk plotter" with the fo
 ### Materials
 * Chassis
   * 1 12x24" sheet of 1/8" plywood
-  * 80mm wheels
+  * 2x 80mm wheels
   * 2 3D printed wheel mounts
   * 2 3D printed stepper motor housing attachment
   * 1 caster wheel
@@ -38,9 +38,11 @@ Since one of the criterion was to draw a 1 meter diameter circle, we did not wan
 
 ### Chassis
 
-The below was laser cut into the wood. The four corner holes were used for aligning the posts that separated the two layers, the side holes for the motor cords, and the middle for the bottle and its tube to enable our liquid for the “drawing” requirement.
+The top and bottom layers were laser cut into quarter inch thick wood. The four corner holes were used for aligning the posts that separated and support the two layers. Holes for the motor cords for the water storage device and its tube allow for access to power and the liquid for the “drawing” requirement across layers. The stepper motors were attached to the main body with a 3D printed part that was found on Thingiverse and then held in place with screws. We also designed a 3D printed attachment to directly attach the 80mm wheels to the D shaped stepper motor shafts.
 
 ![Robot Plates](/week10/robot_plates.png)
+
+
 
 ### Software and Electronics
 
@@ -538,7 +540,7 @@ void Gyro :: updateGyro(){
 
 </details>
 
-Next, in programming the driving functionality, we took some measurements and used some basic geometry (that took us way longer than it should have to figure out), and allowed for public functions that would turn the robot a certain number of degrees, move it forward a certain number of millimeters, and allow it to draw a circle with a diameter of one meter. You’ll notice we ended up getting an accurate enough turn angle without the gyroscope that we decided to comment out that functionality.
+Next, in programming the driving functionality, we took some measurements and used some basic geometry (that took us way longer than it should have to figure out), and allowed for public functions that would turn the robot a certain number of degrees, move it forward a certain number of millimeters, and allow it to draw a circle with a diameter of one meter. You’ll notice we ended up getting an accurate enough turn angle without the gyroscope that we decided to comment out that functionality. However, data from the gyro can be accessed via the API and used for manual calibration.
 
 <details>
 <summary>Microprocessor: Driving (Click to reveal code)</summary>
