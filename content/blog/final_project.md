@@ -3,7 +3,7 @@ author: "Geoffrey Liu"
 title: "AI Tamagotchi"
 date: 2023-05-07
 description: "Documenting the process of building my AI-powered tamagotchi"
-thumbnail: /project/IMG_7475.jpg
+thumbnail: /project/IMG_7475.png
 ---
 
 *What if we could create a digital pet that you could talk to, and adapts to your personality?*
@@ -142,7 +142,7 @@ The final product design as well as a cross-section is shown below. Everything f
 
 The frontface and backface were 3D printed using clear PLA, while the backplate was 3D printed using "Silk Gold" PLA. This was assembled and soldered manually by hand using 26 gauge copper wire. The prototype with unfinished cable management is shown below.
 
-![Final product Wires](/project/IMG_7475.jpg)
+![Final product Wires](/project/IMG_7475.png)
 
 The final product after soldering and cable management is shown below and compared to an AirPods Pro case for size reference.
 
