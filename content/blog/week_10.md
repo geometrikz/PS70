@@ -363,7 +363,7 @@ module.exports = app;
 
 </details>
 
-If you are interested, the final API can be accessed ![here](https://ps70-api.vercel.app/).
+If you are interested, the final API can be accessed [here](https://ps70-api.vercel.app/).
 
 ### Microcontroller programming
 
