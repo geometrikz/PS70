@@ -55,8 +55,8 @@ The prototype used an I2C OLED display, 3 buttons and an I2S Microphone. At this
 The prototype was completed using a double-stacked breadboard.
 
 <!-- ![Prototype](project/IMG_7344.png) -->
-![Prototype](/static/project/IMG_7395.png)
-![Prototype with buttons](/static/project/IMG_7344.png)
+![Prototype](/project/IMG_7395.png)
+![Prototype with buttons](/project/IMG_7344.png)
 
 At this stage I hadn't started coding yet, so I tested each component seperately using code that I wrote in previous weeks. Such as my speech recognition server in [week 7](https://geometrikz.github.io/PS70/blog/week_7/) and my OLED display and buttons in [week 4](https://geometrikz.github.io/PS70/blog/week_4/). Everything was working at this stage apart from the speaker, so I decided to move on to finalize the software and final product design.
 
@@ -68,8 +68,8 @@ I went through *three* major design iterations, and around ten minor design revi
 
 The first design was the chunky breadboard design. I took a photo of the breadboard and used calipers to create a simple faceplate on Fusion360.
 
-![Prototype with case](/static/project/design_v1.png)
-![Prototype with case](/static/project/IMG_7345.png)
+![Prototype with case](/project/design_v1.png)
+![Prototype with case](/project/IMG_7345.png)
 
 This was much too large compared to my initial vision of the product. I wanted something that was small and *at the very least* could fit into my pocket. Ideally something that was Airpod or original tamagochi sized.
 
@@ -88,7 +88,7 @@ In the second iteration, I created a finalized list of parts to use in my final 
 
 I was inspired by the design philosophy of the [Flipper Zero](https://flipperzero.one). Following this inspiration, I came up with the following design. This design was very close in style to the Airpods
 
-![Prototype V2](/static/project/design_2.png)
+![Prototype V2](/project/design_2.png)
 
 However, since my components hadn't yet arrived I underestimated the size of each component. For example, I assumed that the screen was 1.8-2" diagonally and designed a model for that. However, when I obtained the 1.8" TFT LCD display, the diagonal size of the component was 2.7" diagonally, so the components didn't fit into this design. I also didn't take into account space for the wires and the battery. After printing out a prototype of this design, I realized that the button spacing was not correct, the microphone did not fit exactly into the holder and the speaker grill was too large.
 
@@ -100,14 +100,14 @@ I tried to fix these issues by scaling the design proportionally to fit the size
 
 In the third iteration, I decided to measure each component exactly and design mini-casings for each component shown below. I put these components next to each other into a design, which dicated how small my device could be. This also had the advantage since now I can design the casing around the components, and know that every component will fit exactly, the D-Pad was the most difficult to design and required alot of iterations since the tolerance of the buttons was very small. It was very easy for the buttons to be slightly tilted and ruin the fit and finish of the final product.
 
-![Prototype V3A](/static/project/component_cases.png)
-![Prototype V3A](/static/project/prototype_v3a.png)
+![Prototype V3A](/project/component_cases.png)
+![Prototype V3A](/project/prototype_v3a.png)
 
 I didn't really like this layout since it makes the screen look very small, and it's too long and skinny. This was mainly because the screen had a very big chin from the ribbon cable and the PCB that it was attached onto (this can be seen in the asymmetrical screen casing in the image below.)
 
 A graphic of the condensed design iteration process (minus revisions) is shown below.
 
-![Design iterations](/static/project/design_iteration_process.png)
+![Design iterations](/project/design_iteration_process.png)
 
 ## Final design
 
@@ -115,35 +115,35 @@ After doing abit of drawing and redesign, I decided to make the screen vertical 
 
 The design consists of a front-face:
 
-![Final Front Face](/static/project/design_v3b.png)
+![Final Front Face](/project/design_v3b.png)
 
 A backplate which holds all the components (microphone, speaker, buttons and amplifier)
 
-![Final Backplate](/static/project/backplate_final.png)
+![Final Backplate](/project/backplate_final.png)
 
 And a backface which holds the battery and the ESP32.
 
-![Final Backface](/static/project/backface_final.png)
+![Final Backface](/project/backface_final.png)
 
 Everything is held in via M2 and M3 screws.
 
 The final product design as well as a cross-section is shown below. Everything fits neatly and tightly.
 
-![Final product](/static/project/final_product.png)
+![Final product](/project/final_product.png)
 
-![Final product](/static/project/final_product_cross_section.png)
+![Final product](/project/final_product_cross_section.png)
 
 ## Final Product
 
 The frontface and backface were 3D printed using clear PLA, while the backplate was 3D printed using "Silk Gold" PLA. This was assembled and soldered manually by hand using 26 gauge copper wire. The prototype with unfinished cable management is shown below.
 
-![Final product 1](/static/project/IMG_7475.png)
+![Final product 1](/project/IMG_7475.png)
 
 The final product after soldering and cable management is shown below and compared to an AirPods Pro case for size reference.
 
-![Final product 1](/static/project/IMG_7488.png)
+![Final product 1](/project/IMG_7488.png)
 
-![Final product 1](/static/project/IMG_7487.png)
+![Final product 1](/project/IMG_7487.png)
 
 ## Electronic circuit
 
