@@ -1,8 +1,8 @@
 ---
 author: "Geoffrey Liu"
-title: "Week 10+ (Final Project) Updates"
+title: "Sidewalk Plotter (Team Thursday)"
 date: 2023-04-12
-description: "Machine Building"
+description: "Building a drawing machine!"
 thumbnail: /week10/featured.png
 ---
 
