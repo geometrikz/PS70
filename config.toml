@@ -1,6 +1,6 @@
 baseurl = "https://geometrikz.github.io/PS70"
 metaDataFormat = "yaml"
-title = "PS70: Intro to Digital Fabrication"
+title = "PS70: Intro to Digital Fabrication (Spring 2023)"
 theme = "blist"
 canonifyURLs = true
 
